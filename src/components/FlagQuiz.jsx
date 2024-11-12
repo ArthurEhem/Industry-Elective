@@ -1,65 +1,134 @@
-// components/FlagQuiz.js
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const FlagQuiz = () => {
-  const [flags, setFlags] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+function shuffle(array) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
+function calculateScore(accuracy, time) {
+  const weightedAccuracy = accuracy * 100;
+  const weightedTime = time / 60;
+  const score = Math.floor(weightedAccuracy - weightedTime);
+  return score > 0 ? score : 0;
+} 
+
+function FlagQuiz() {
+  const [countries, setCountries] = useState([]);
+  const [currentCountry, setCurrentCountry] = useState(null);
+  const [correctClicks, setCorrectClicks] = useState(0);
+  const [totalClicks, setTotalClicks] = useState(0);
+
+  const timeRef = useRef(0);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const continent = location.state.continent;
+
+  function handleTimeRef(time) {
+    timeRef.current = time;
+  }
 
   useEffect(() => {
-    // Fetch 25 random country codes
-    const countryCodes = ["CN", "US", "FR", "DE", "BR", "IN", "JP", "RU", "CA", "AU", /* add more codes as needed */];
-    const shuffledCodes = countryCodes.sort(() => 0.5 - Math.random()).slice(0, 25);
-    
-    // Set flags in 5x5 grid format
-    setFlags(shuffledCodes.map(code => ({ code, visible: true })));
-  }, []);
+    setCountries(shuffle(continent.countries));
+  }, [continent.countries]);
 
-  const currentFlag = flags[currentQuestion];
-
-  const handleFlagClick = (flag) => {
-    // Prevent action if the game is over
-    if (currentQuestion >= flags.length) return;
-    
-    if (flag.code === currentFlag.code) {
-      setScore(score + 1);
+  useEffect(() => {
+    if (countries.length > 0) {
+      setCurrentCountry(
+        countries[Math.floor(Math.random() * countries.length)],
+      );
     }
-    
-    // Hide the selected flag
-    setFlags(flags.map(f => f.code === flag.code ? { ...f, visible: false } : f));
-    
-    // Move to next question
-    setCurrentQuestion(currentQuestion + 1);
-  };
+  }, [countries]);
+
+  function handleClick(country) {
+    if (countries.length <= 1) {
+      setCurrentCountry(null);
+      navigate("/game/results", {
+        state: {
+          data: {
+            accuracy: ((correctClicks / totalClicks) * 100).toFixed(2),
+            time: timeRef.current,
+            score: calculateScore(accuracy / 100, timeRef.current),
+            continent: continent,
+          },
+        },
+      });
+    }
+    setTotalClicks(totalClicks + 1);
+    setCountries(countries.filter((c) => c.name !== country.name));
+    if (country.name === currentCountry.name) {
+      setCorrectClicks(correctClicks + 1);
+    }
+  }
+
+  const accuracy =
+    totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
   return (
-    <div>
-      <h1>Flag Quiz Game</h1>
-      {currentQuestion < flags.length ? (
-        <p>Question {currentQuestion + 1} of 10: Select the flag of {currentFlag?.code}</p>
-      ) : (
-        <h2>Game Over</h2>
-      )}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
-        {flags.map((flag, index) => (
-          flag.visible && (
-            <img
-              key={index}
-              src={`https://flagsapi.com/${flag.code}/flat/64.png`}
-              alt={`Flag of ${flag.code}`}
-              onClick={() => handleFlagClick(flag)}
-              style={{ cursor: 'pointer', border: '1px solid #ddd', borderRadius: '5px' }}
-            />
-          )
-        ))}
+    <div className="relative flex h-screen flex-col items-center justify-center bg-gray-50">
+      <div className="absolute right-10 top-10 flex gap-x-6">
+        <button
+          onClick={() => {
+            setCountries(shuffle(countries));
+          }}
+          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
+        >
+          Shuffle
+        </button>
+        <button
+          onClick={() => {
+            navigate(0);
+          }}
+          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
+        >
+          Retry
+        </button>
+        <button
+          onClick={() => {
+            navigate("/", { replace: true });
+          }}
+          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
+        >
+          Quit
+        </button>
       </div>
-      {currentQuestion >= flags.length && (
-        <div>
-          <p>You answered {score} out of {flags.length} correctly!</p>
+      <div>
+        <h1 className="text-center text-[40px] font-bold text-blue-600">
+          {currentCountry && currentCountry.name}
+        </h1>
+        <p className="text-center text-2xl font-semibold">
+          <span className="text-blue-600">{accuracy}%</span> Accuracy
+        </p>
+      </div>
+      <div>
+        <div className="grid grid-cols-8 grid-rows-8 gap-2 overflow-auto rounded-md bg-gray-50 p-12 shadow-md">
+          {countries.map((country, index) => (
+            <div
+              key={index}
+              className={`relative flex items-center justify-center rounded-md p-1 transition hover:ring-2 hover:ring-blue-600`}
+              onClick={() => {
+                handleClick(country);
+              }}
+            >
+              <div
+                className={`absolute h-full w-full opacity-50 hover:bg-blue-600`}
+              ></div>
+              <img
+                src={`/flags/${country.code}.png`}
+                className="h-[56px] w-[84px] rounded-md ring-1 ring-gray-300"
+              />
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
-};
+}
 
 export default FlagQuiz;
