@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
-import FlagQuiz from "./components/FlagQuiz";
+import Quiz from "./components/Quiz";
 import ResultPage from "./components/ResultPage";
 
 
@@ -16,7 +16,7 @@ const browserRouter = createBrowserRouter([
   {
     path: "/game",
     element: (
-        <FlagQuiz />
+        <Quiz />
     ),
   },
   {

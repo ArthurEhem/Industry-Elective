@@ -37,12 +37,6 @@ function ResultPage() {
           </div>
           <div className="flex justify-between space-x-6">
             <div className="w-full">
-              <p className="text-sm font-medium text-gray-600">Time Finished</p>
-              <h2 className="text-2xl font-semibold text-blue-600 mt-1">
-                {secondsToHMS(data.time)}
-              </h2>
-            </div>
-            <div className="w-full">
               <p className="text-sm font-medium text-gray-600">Accuracy</p>
               <h2 className="text-2xl font-semibold text-blue-600 mt-1">
                 {data.accuracy}%
