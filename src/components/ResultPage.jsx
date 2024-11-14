@@ -25,40 +25,40 @@ function ResultPage() {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-50">
-      <div className="rounded-md bg-white p-12 shadow-md">
-        <h1 className="block text-2xl font-bold">Summary</h1>
-        <div className="mt-10">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
+        <h1 className="text-3xl font-extrabold text-gray-700 mb-4">Summary</h1>
+        <div className="space-y-6">
           <div>
-            <p className="block text-sm font-medium">Continent</p>
-            <h1 className="mt-2 block text-2xl font-semibold text-blue-600">
+            <p className="text-sm font-medium text-gray-600">Continent</p>
+            <h2 className="text-2xl font-semibold text-blue-600 mt-1">
               {data.continent.name}
-            </h1>
+            </h2>
           </div>
-          <div className="mt-6 flex justify-between">
+          <div className="flex justify-between space-x-6">
             <div className="w-full">
-              <p className="block text-sm font-medium">Time finished</p>
-              <h1 className="mt-2 block text-2xl font-semibold text-blue-600">
+              <p className="text-sm font-medium text-gray-600">Time Finished</p>
+              <h2 className="text-2xl font-semibold text-blue-600 mt-1">
                 {secondsToHMS(data.time)}
-              </h1>
+              </h2>
             </div>
             <div className="w-full">
-              <p className="block text-sm font-medium">Accuracy</p>
-              <h1 className="mt-2 block text-2xl font-semibold text-blue-600">
+              <p className="text-sm font-medium text-gray-600">Accuracy</p>
+              <h2 className="text-2xl font-semibold text-blue-600 mt-1">
                 {data.accuracy}%
-              </h1>
+              </h2>
             </div>
           </div>
-          <div className="mt-6 w-full">
-            <p className="block text-sm font-medium">Score</p>
-            <h1 className="mt-2 block text-2xl font-semibold text-blue-600">
+          <div>
+            <p className="text-sm font-medium text-gray-600">Score</p>
+            <h2 className="text-2xl font-semibold text-blue-600 mt-1">
               {data.score}
-            </h1>
+            </h2>
           </div>
         </div>
-        <div className="mt-24">
+        <div className="mt-16">
           <button
-            className="w-96 rounded-md bg-blue-600 p-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800"
+            className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
             onClick={handleClick}
           >
             Retry
