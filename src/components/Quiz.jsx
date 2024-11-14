@@ -26,7 +26,7 @@ function Quiz() {
   useEffect(() => {
     setCountries(shuffle(continent.countries));
   }, [continent.countries]);
-// Changes into next country
+
   useEffect(() => {
     if (countries.length > 0) {
       const nextCountry = countries[Math.floor(Math.random() * countries.length)];
@@ -36,20 +36,17 @@ function Quiz() {
   }, [countries]);
 
   function generateFlagOptions(correctCountry) {
-    // Get three random incorrect options
     const incorrectOptions = countries
       .filter((country) => country.name !== correctCountry.name)
       .sort(() => 0.5 - Math.random())
       .slice(0, difficulty === "normal" ? 3 : 15);
-      
-    // Add the correct option and shuffle them
+
     const options = shuffle([correctCountry, ...incorrectOptions]);
     setFlagOptions(options);
   }
- 
+
   function handleClick(country) {
     setTotalClicks(totalClicks + 1);
-    // Remove the selected country from the list
     setCountries(countries.filter((c) => c.name !== currentCountry.name));
 
     if (country.name === currentCountry.name) {
@@ -67,61 +64,65 @@ function Quiz() {
         },
       });
     } else {
-      // Set the next country and options
       const nextCountry = countries[Math.floor(Math.random() * countries.length)];
       setCurrentCountry(nextCountry);
       generateFlagOptions(nextCountry);
     }
   }
 
-  const accuracy =
-    totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
+  const accuracy = totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center bg-gray-50">
-      <div className="absolute right-10 top-10 flex gap-x-6">
-        <button
-          onClick={() => setCountries(shuffle(countries))}
-          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
-        >
-          Shuffle
-        </button>
+    <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
+      <div className="absolute right-8 top-8 flex gap-4">
         <button
           onClick={() => navigate(0)}
-          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
+          className="rounded-lg bg-blue-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-transform duration-150"
         >
           Retry
         </button>
         <button
           onClick={() => navigate("/", { replace: true })}
-          className="w-24 rounded-md p-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 transition hover:bg-gray-100 hover:ring-gray-400 active:bg-gray-200 active:ring-gray-500"
+          className="rounded-lg bg-red-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-red-700 active:scale-95 transition-transform duration-150"
         >
           Quit
         </button>
       </div>
-      <div>
-        <h1 className="text-center text-[40px] font-bold text-blue-600">
-          {currentCountry && currentCountry.name}
-        </h1>
-        <p className="text-center text-2xl font-semibold">
-          <span className="text-blue-600">{accuracy}%</span> Accuracy
+      <div className="text-center">
+        <h1 className="text-5xl font-extrabold text-blue-700 mb-4">{currentCountry && currentCountry.name}</h1>
+        <p className="text-xl font-semibold text-gray-600">
+          Accuracy: <span className="text-blue-600">{accuracy}%</span>
         </p>
+        <div className="w-64 h-2 mt-2 bg-gray-300 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-blue-600 transition-all duration-300"
+            style={{ width: `${accuracy}%` }}
+          ></div>
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-4 p-6">
+      <div className="grid grid-cols-4 gap-6 mt-12">
         {flagOptions.map((country, index) => (
           <div
             key={index}
-            className="relative flex items-center justify-center rounded-md p-1 transition hover:ring-2 hover:ring-blue-600"
+            className="relative flex items-center justify-center p-2 rounded-md bg-white shadow-md hover:shadow-xl transition-transform transform hover:scale-105 cursor-pointer"
             onClick={() => handleClick(country)}
           >
-            <div className="absolute h-full w-full opacity-50 hover:bg-blue-600"></div>
+            <div className="absolute inset-0 opacity-0 hover:bg-blue-600 hover:opacity-20 rounded-md transition-opacity"></div>
             <img
               src={`/flags/${country.code}.png`}
-              className="h-[112px] w-[168px] rounded-md ring-1 ring-gray-300"
+              className="h-28 w-40 rounded-md object-cover ring-1 ring-gray-300"
               alt={`${country.name} flag`}
             />
           </div>
         ))}
+      </div>
+      <div className="absolute bottom-8 flex justify-center w-full">
+        <button
+          onClick={() => setCountries(shuffle(countries))}
+          className="rounded-lg bg-gray-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-gray-700 active:scale-95 transition-transform duration-150"
+        >
+          Shuffle
+        </button>
       </div>
     </div>
   );

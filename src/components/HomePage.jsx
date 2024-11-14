@@ -1,35 +1,37 @@
 import {
-    Listbox,
-    ListboxButton,
-    ListboxOption,
-    ListboxOptions,
-    Transition,
-  } from "@headlessui/react";
-  import { useState } from "react";
-  import { Link, useNavigate } from "react-router-dom";
-  import { ChevronDownIcon } from "@heroicons/react/20/solid";
-  
-  import { continents } from "../data/continents";
-  const difficultyOptions = ["Normal", "Hard"];
-  
-  function HomePage() {
-    const [selectedContinent, setSelectedContinent] = useState(continents[0]);
-    const [selectedDifficulty, setSelectedDifficulty] = useState(difficultyOptions[0]);
-  
-    const navigate = useNavigate();
-  
-    return (
-      <div className="flex h-screen items-center justify-center bg-gray-50">
-        <div className="rounded-md bg-white p-12 shadow-md">
-          <div className="mt-10">
-            <label htmlFor="continent" className="block text-sm font-medium">
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { continents } from "../data/continents";
+
+const difficultyOptions = ["Normal", "Hard"];
+
+function HomePage() {
+  const [selectedContinent, setSelectedContinent] = useState(continents[0]);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(difficultyOptions[0]);
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
+        <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>
+        
+        <div className="space-y-10">
+          <div>
+            <label htmlFor="continent" className="block text-sm font-medium text-gray-600">
               Continent
             </label>
             <Listbox value={selectedContinent} onChange={setSelectedContinent}>
-              <ListboxButton className="relative mt-2 block w-96 cursor-default rounded-md p-2 text-left text-sm ring-1 ring-inset ring-gray-300">
+              <ListboxButton className="relative mt-2 block w-full cursor-pointer rounded-md p-3 bg-gray-50 text-left text-sm shadow-sm hover:bg-gray-100 ring-1 ring-gray-300">
                 {selectedContinent.name}
                 <ChevronDownIcon
-                  className="group pointer-events-none absolute right-2.5 top-2.5 size-4"
+                  className="pointer-events-none absolute right-3 top-3 w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </ListboxButton>
@@ -38,15 +40,16 @@ import {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <ListboxOptions
-                  anchor="bottom"
-                  className="mt-2 w-[var(--button-width)] rounded-md bg-white py-2 text-left text-sm shadow-md ring-1 ring-gray-300"
-                >
+                <ListboxOptions className="mt-2 w-full rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-300">
                   {continents.map((continent, index) => (
                     <ListboxOption
                       key={index}
                       value={continent}
-                      className="cursor-default select-none p-2 data-[focus]:bg-blue-600 data-[focus]:text-white"
+                      className={({ active }) =>
+                        `cursor-pointer select-none p-2 ${
+                          active ? "bg-blue-600 text-white" : "text-gray-700"
+                        }`
+                      }
                     >
                       {continent.name}
                     </ListboxOption>
@@ -55,15 +58,16 @@ import {
               </Transition>
             </Listbox>
           </div>
-          <div className="mt-10">
-            <label htmlFor="difficulty" className="block text-sm font-medium">
+
+          <div>
+            <label htmlFor="difficulty" className="block text-sm font-medium text-gray-600">
               Difficulty
             </label>
             <Listbox value={selectedDifficulty} onChange={setSelectedDifficulty}>
-              <ListboxButton className="relative mt-2 block w-96 cursor-default rounded-md p-2 text-left text-sm ring-1 ring-inset ring-gray-300">
+              <ListboxButton className="relative mt-2 block w-full cursor-pointer rounded-md p-3 bg-gray-50 text-left text-sm shadow-sm hover:bg-gray-100 ring-1 ring-gray-300">
                 {selectedDifficulty}
                 <ChevronDownIcon
-                  className="group pointer-events-none absolute right-2.5 top-2.5 size-4"
+                  className="pointer-events-none absolute right-3 top-3 w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
               </ListboxButton>
@@ -72,15 +76,16 @@ import {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <ListboxOptions
-                  anchor="bottom"
-                  className="mt-2 w-[var(--button-width)] rounded-md bg-white py-2 text-left text-sm shadow-md ring-1 ring-gray-300"
-                >
+                <ListboxOptions className="mt-2 w-full rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-300">
                   {difficultyOptions.map((difficulty, index) => (
                     <ListboxOption
                       key={index}
                       value={difficulty}
-                      className="cursor-default select-none p-2 data-[focus]:bg-blue-600 data-[focus]:text-white"
+                      className={({ active }) =>
+                        `cursor-pointer select-none p-2 ${
+                          active ? "bg-blue-600 text-white" : "text-gray-700"
+                        }`
+                      }
                     >
                       {difficulty}
                     </ListboxOption>
@@ -89,27 +94,27 @@ import {
               </Transition>
             </Listbox>
           </div>
+        </div>
 
-          <div className="mt-24">
-            <button
-              type="button"
-              className="w-96 rounded-md bg-blue-600 p-2 text-sm font-semibold text-white hover:bg-blue-700 active:bg-blue-800"
-              onClick={() => {
-                navigate("/game", {
-                  state: {
-                    continent: selectedContinent,
-                    difficulty: selectedDifficulty.toLowerCase(),
-                  },
-                });
-              }}
-            >
-              Play
-            </button>
-          </div>
+        <div className="mt-12">
+          <button
+            type="button"
+            className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
+            onClick={() => {
+              navigate("/game", {
+                state: {
+                  continent: selectedContinent,
+                  difficulty: selectedDifficulty.toLowerCase(),
+                },
+              });
+            }}
+          >
+            Play
+          </button>
         </div>
       </div>
-    );
-  }
-  
-  export default HomePage;
-  
+    </div>
+  );
+}
+
+export default HomePage;

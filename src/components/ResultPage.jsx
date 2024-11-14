@@ -17,11 +17,15 @@ function ResultPage() {
 
   const data = location.state.data;
 
-  function handleClick() {
+  function handleRetryClick() {
     navigate("/game", {
       replace: true,
       state: { continent: data.continent },
     });
+  }
+
+  function handleQuitClick() {
+    navigate("/", { replace: true });
   }
 
   return (
@@ -50,12 +54,18 @@ function ResultPage() {
             </h2>
           </div>
         </div>
-        <div className="mt-16">
+        <div className="mt-16 flex space-x-4">
           <button
             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
-            onClick={handleClick}
+            onClick={handleRetryClick}
           >
             Retry
+          </button>
+          <button
+            className="w-full rounded-lg bg-gradient-to-r from-red-600 to-red-500 py-3 text-lg font-semibold text-white shadow-md hover:from-red-700 hover:to-red-600 active:scale-95 transform transition-all duration-150"
+            onClick={handleQuitClick}
+          >
+            Quit
           </button>
         </div>
       </div>
