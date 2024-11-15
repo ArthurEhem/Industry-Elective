@@ -31,10 +31,10 @@
 
 .wrong-message {
   position: fixed;
-  top: 50%;
+  bottom: 92%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 25rem;
+  font-size: 2em;
   color: red;
   font-weight: bold;
   z-index: 9999;

@@ -74,7 +74,9 @@ function Quiz() {
           data: {
             accuracy: ((correctClicks / totalClicks) * 100).toFixed(2),
             score: correctClicks,
+            total: totalClicks,
             continent: continent,
+            difficulty: difficulty,
           },
         },
       });
@@ -91,7 +93,7 @@ function Quiz() {
   return (
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       {showWrong && (
-        <div className="wrong-message">WRONG!</div>
+        <div className="wrong-message">Incorrect</div>
       )}
       <div className="absolute right-8 top-8 flex gap-4">
         <button

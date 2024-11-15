@@ -20,7 +20,7 @@ function ResultPage() {
   function handleRetryClick() {
     navigate("/game", {
       replace: true,
-      state: { continent: data.continent },
+      state: { continent: data.continent, difficulty: data.difficulty },
     });
   }
 
@@ -50,7 +50,7 @@ function ResultPage() {
           <div>
             <p className="text-sm font-medium text-gray-600">Score</p>
             <h2 className="text-2xl font-semibold text-blue-600 mt-1">
-              {data.score}
+              {data.score} out of {data.total}
             </h2>
           </div>
         </div>
