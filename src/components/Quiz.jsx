@@ -18,6 +18,7 @@ function Quiz() {
   const [flagOptions, setFlagOptions] = useState([]);
   const [correctClicks, setCorrectClicks] = useState(0);
   const [totalClicks, setTotalClicks] = useState(0);
+  const [showWrong, setShowWrong] = useState(false);
 
   const rightAudioRef = useRef(new Audio(rightSound));
   const wrongAudioRef = useRef(new Audio(wrongSound));
@@ -57,13 +58,14 @@ function Quiz() {
 
   function handleClick(country) {
     setTotalClicks(totalClicks + 1);
-    setCountries(countries.filter((c) => c.name !== currentCountry.name));
 
     if (country.name === currentCountry.name) {
       setCorrectClicks(correctClicks + 1);
       playAudio(rightAudioRef);
     } else {
       playAudio(wrongAudioRef);
+      setShowWrong(true);
+      setTimeout(() => setShowWrong(false), 1000); // Show "WRONG!" for 1 second
     }
 
     if (countries.length <= 1) {
@@ -77,6 +79,7 @@ function Quiz() {
         },
       });
     } else {
+      setCountries(countries.filter((c) => c.name !== currentCountry.name));
       const nextCountry = countries[Math.floor(Math.random() * countries.length)];
       setCurrentCountry(nextCountry);
       generateFlagOptions(nextCountry);
@@ -87,6 +90,9 @@ function Quiz() {
 
   return (
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
+      {showWrong && (
+        <div className="wrong-message">WRONG!</div>
+      )}
       <div className="absolute right-8 top-8 flex gap-4">
         <button
           onClick={() => navigate(0)}

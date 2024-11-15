@@ -30,12 +30,14 @@
 }
 
 .wrong-message {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 5rem;
+  font-size: 8rem;
   color: red;
   font-weight: bold;
+  z-index: 9999;
   animation: fadeInOut 1s;
 }
+
