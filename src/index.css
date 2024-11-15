@@ -3,14 +3,39 @@
 @tailwind utilities;
 
 @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2); /* Size of the pulse */
-    }
+  0%, 100% {
+    transform: scale(1);
   }
-  .animate-pulse-custom {
-    animation: pulse 2s infinite; /* Duration */
+  50% {
+    transform: scale(1.2); /* Size of the pulse */
   }
-  
+}
+.animate-pulse-custom {
+  animation: pulse 2s infinite; /* Duration */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.wrong-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: red;
+  font-weight: bold;
+  animation: fadeInOut 1s;
+}

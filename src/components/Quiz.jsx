@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import rightSound from '/Right.mp3';
+import wrongSound from '/Wrong.mp3';
 
 function shuffle(array) {
   const newArray = [...array];
@@ -17,7 +19,9 @@ function Quiz() {
   const [correctClicks, setCorrectClicks] = useState(0);
   const [totalClicks, setTotalClicks] = useState(0);
 
-  const timeRef = useRef(0);
+  const rightAudioRef = useRef(new Audio(rightSound));
+  const wrongAudioRef = useRef(new Audio(wrongSound));
+
   const location = useLocation();
   const navigate = useNavigate();
   const continent = location.state.continent;
@@ -45,12 +49,21 @@ function Quiz() {
     setFlagOptions(options);
   }
 
+  function playAudio(audioRef) {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+  }
+
   function handleClick(country) {
     setTotalClicks(totalClicks + 1);
     setCountries(countries.filter((c) => c.name !== currentCountry.name));
 
     if (country.name === currentCountry.name) {
       setCorrectClicks(correctClicks + 1);
+      playAudio(rightAudioRef);
+    } else {
+      playAudio(wrongAudioRef);
     }
 
     if (countries.length <= 1) {
