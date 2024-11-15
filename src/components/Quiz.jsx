@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import rightSound from '/Right.mp3';
+import rightSound from '/Right.mp3'; 
 import wrongSound from '/Wrong.mp3';
 
 function shuffle(array) {
