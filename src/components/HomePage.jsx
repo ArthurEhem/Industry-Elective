@@ -18,7 +18,8 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+    <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <img src="/Title.png" alt="Title" className="mb-8 animate-pulse-custom" />
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>
         

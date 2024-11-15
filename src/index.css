@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); /* Size of the pulse */
+    }
+  }
+  .animate-pulse-custom {
+    animation: pulse 2s infinite; /* Duration */
+  }
+  
