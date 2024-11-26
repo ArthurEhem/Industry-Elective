@@ -1,7 +1,19 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 
-function MusicPlayer() {
+const MusicPlayer = forwardRef((props, ref) => {
   const audioRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      audioRef.current.play();
+    },
+    pause: () => {
+      audioRef.current.pause();
+    },
+    isPlaying: () => {
+      return !audioRef.current.paused;
+    }
+  }));
 
   useEffect(() => {
     const playAudio = async () => {
@@ -9,11 +21,9 @@ function MusicPlayer() {
         await audioRef.current.play();
       } catch (error) {
         console.log('Autoplay was prevented:', error);
-        // Mute and retry play if autoplay is blocked
-        audioRef.current.muted = true;
-        audioRef.current.play().then(() => {
-          audioRef.current.muted = false; // Unmute after successful play
-        });
+        document.addEventListener('click', () => {
+          audioRef.current.play();
+        }, { once: true });
       }
     };
 
@@ -23,6 +33,6 @@ function MusicPlayer() {
   return (
     <audio ref={audioRef} src="/Background.mp3" loop></audio>
   );
-}
+});
 
 export default MusicPlayer;
