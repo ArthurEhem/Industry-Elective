@@ -5,6 +5,7 @@ import ResultPage from "./components/ResultPage";
 import Layout from "./components/Layout";
 import Options from "./components/Options";
 import Library from "./components/Library";
+import ContinentGuessGame from "./components/ContinentGuessGame";
 
 const browserRouter = createBrowserRouter([
   {
@@ -57,6 +58,16 @@ const browserRouter = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/ContinentGuessGame",
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <ContinentGuessGame/>
+      }
+    ]
+  }
 ]);
 
 export { browserRouter };

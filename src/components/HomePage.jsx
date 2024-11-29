@@ -17,6 +17,15 @@ function HomePage() {
           >
             Plan Challenge
           </button>
+          
+          <button
+            type="button"
+            className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
+            onClick={() => navigate("/ContinentGuessGame")}
+          >
+            Continent Guess Game
+          </button>
+
           <button
             type="button"
             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
