@@ -6,325 +6,379 @@ const continents = [
         name: "Algeria",
         code: "dz",
         capital: "Algiers",
-        officialLanguages: ["Arabic", "Tamazight"]
+        officialLanguages: ["Arabic", "Tamazight"],
+        currency: "Algerian Dinar (DZD)"
       },
       {
         name: "Angola",
         code: "ao",
         capital: "Luanda",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "Angolan Kwanza (AOA)"
       },
       {
         name: "Benin",
         code: "bj",
         capital: "Porto-Novo",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)"
       },
       {
         name: "Botswana",
         code: "bw",
         capital: "Gaborone",
-        officialLanguages : ["English", "Setswana"]
+        officialLanguages : ["English", "Setswana"],
+        currency: "Botswana Pula (BWP)"
       },
       {
         name: "Burkina Faso",
         code: "bf",
         capital: "Ouagadoug ",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)"
       },
       {
         name: "Burundi",
         code: "bi",
         capital : "Gitega",
-        officialLanguages: ["Kirundi", "French"]
+        officialLanguages: ["Kirundi", "French"],
+        currency: "Burundian Franc (BIF)"
       },
       {
         name: "Cameroon",
         code: "cm",
         capital: "Yaound ",
-        officialLanguages: ["French", "English"]
+        officialLanguages: ["French", "English"],
+        currency: "Central African CFA franc (XAF)"
       },
       {
         name: "Cape Verde",
         code: "cv",
         capital: "Praia",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "Cape Verdean Escudo (CVE)",
       },
       {
         name: "Central African Republic",
         code: "cf",
         capital: "Bangui",
-        officialLanguages: ["French", "Sango"]
+        officialLanguages: ["French", "Sango"],
+        currency: "Central African CFA franc (XAF)",
       },
       {
         name: "Chad",
         code: "td",
         capital: "N'Djam ",
-        officialLanguages: ["French", "Arabic"]
+        officialLanguages: ["French", "Arabic"],
+        currency: "Central African CFA franc (XAF)",
       },
       {
         name: "Comoros",
         code: "km",
         capital: "Moroni",
-        officialLanguages: ["Comorian", "Arabic", "French"]
+        officialLanguages: ["Comorian", "Arabic", "French"], 
+        currency: "Comorian Franc (KMF)",
       },
       {
         name: "Democratic Republic of the Congo",
         code: "cd",
         capital: "Kinshasa",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Congolese Franc (CDF)",
       },
       {
         name: "Republic of the Congo",
         code: "cg",
         capital: "Brazzaville",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Central African CFA franc (XAF)",
       },
       {
         name: "Djibouti",
         code: "dj",
         capital: "Djibouti",
-        officialLanguages: ["French", "Arabic"]
+        officialLanguages: ["French", "Arabic"],
+        currency: "Djiboutian Franc (DJF)",
       },
       {
         name: "Egypt",
         code: "eg",
         capital: "Cairo",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Egyptian Pound (EGP)",
       },
       {
         name: "Equatorial Guinea",
         code: "gq",
         capital: "Malabo",
-        officialLanguages: ["Spanish", "French", "Portuguese"]
+        officialLanguages: ["Spanish", "French", "Portuguese"],
+        currency: "Central African CFA franc (XAF)",
       },
       {
         name: "Eritrea",
         code: "er",
         capital: "Asmara",
-        officialLanguages: ["Tigrinya", "Arabic", "English"]
+        officialLanguages: ["Tigrinya", "Arabic", "English"],
+        currency: "Eritrean Nakfa (ERN)",
       },
       {
         name: "Eswatini",
         code: "sz",
         capital: "Mbabane",
-        officialLanguages: ["Swazi", "English"]
+        officialLanguages: ["Swazi", "English"],
+        currency: "Swazi Lilangeni (SZL)",
       },
       {
         name: "Ethiopia",
         code: "et",
         capital: "Addis Ababa",
-        officialLanguages: ["Amharic"]
+        officialLanguages: ["Amharic"],
+        currency: "Ethiopian Birr (ETB)",
       },
       {
         name: "Gabon",
         code: "ga",
         capital: "Libreville",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Central African CFA franc (XAF)",
       },
       {
         name: "Gambia",
         code: "gm",
         capital: "Banjul",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Gambian Dalasi (GMD)",
       },
       {
         name: "Ghana",
         code: "gh",
         capital: "Accra",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Ghanaian Cedi (GHS)",
       },
       {
         name: "Guinea",
         code: "gn",
         capital: "Conakry",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Guinean Franc (GNF)",
       },
       {
         name: "Guinea-Bissau",
         code: "gw",
         capital: "Bissau",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Ivory Coast",
         code: "ci",
         capital: "Yamoussoukro",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Kenya",
         code: "ke",
         capital: "Nairobi",
-        officialLanguages: ["Swahili", "English"]
+        officialLanguages: ["Swahili", "English"],
+        currency: "Kenyan Shilling (KES)",
       },
       {
         name: "Lesotho",
         code: "ls",
         capital: "Maseru",
-        officialLanguages: ["English", "Sesotho"]
+        officialLanguages: ["English", "Sesotho"],
+        currency: "Lesotho Loti (LSL)",
       },
       {
         name: "Liberia",
         code: "lr",
         capital: "Monrovia",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Liberian Dollar (LRD)",
       },
       {
         name: "Libya",
         code: "ly",
         capital: "Tripoli",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Libyan Dinar (LYD)",
       },
       {
         name: "Madagascar",
         code: "mg",
         capital: "Antananarivo",
-        officialLanguages: ["Malagasy", "French"]
+        officialLanguages: ["Malagasy", "French"],
+        currency: "Malagasy Ariary (MGA)",
       },
       {
         name: "Malawi",
         code: "mw",
         capital: "Lilongwe",
-        officialLanguages: ["English", "Chichewa"]
+        officialLanguages: ["English", "Chichewa"],
+        currency: "Malawian Kwacha (MWK)",
       },
       {
         name: "Mali",
         code: "ml",
         capital: "Bamako",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Mauritania",
         code: "mr",
         capital: "Nouakchott",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Mauritanian Ouguiya (MRU)",
       },
       {
         name: "Mauritius",
         code: "mu",
         capital: "Port Louis",
-        officialLanguages: ["English", "French"]
+        officialLanguages: ["English", "French"],
+        currency: "Mauritian Rupee (MUR)",
       },
       {
         name: "Morocco",
         code: "ma",
         capital: "Rabat",
-        officialLanguages: ["Arabic", "Berber"]
+        officialLanguages: ["Arabic", "Berber"],
+        currency: "Moroccan Dirham (MAD)",
       },
       {
         name: "Mozambique",
         code: "mz",
         capital: "Maputo",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "Mozambican Metical (MZN)",
       },
       {
         name: "Namibia",
         code: "na",
         capital: "Windhoek",
-        officialLanguages: ["English", "Afrikaans"]
+        officialLanguages: ["English", "Afrikaans"],
+        currency: "Namibian Dollar (NAD)",
       },
       {
         name: "Niger",
         code: "ne",
         capital: "Niamey",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"], 
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Nigeria",
         code: "ng",
         capital: "Abuja",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Nigerian Naira (NGN)",
       },
       {
         name: "Rwanda",
         code: "rw",
         capital: "Kigali",
-        officialLanguages: ["Kinyarwanda", "French", "English"]
+        officialLanguages: ["Kinyarwanda", "French", "English"],
+        currency: "Rwandan Franc (RWF)",
       },
       {
         name: "Sao Tome and Principe",
         code: "st",
         capital: "Sao Tome",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "Sao Tome and Principe Dobra (STN)",
       },
       {
         name: "Senegal",
         code: "sn",
         capital: "Dakar",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Seychelles",
         code: "sc",
         capital: "Victoria",
-        officialLanguages: ["English", "French", "Seychellois Creole"]
+        officialLanguages: ["English", "French", "Seychellois Creole"],
+        currency: "Seychellois Rupee (SCR)",
       },
       {
         name: "Sierra Leone",
         code: "sl",
         capital: "Freetown",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Sierra Leonean Leone (SLL)",
       },
       {
         name: "Somalia",
         code: "so",
         capital: "Mogadishu",
-        officialLanguages: ["Somali", "Arabic"]
+        officialLanguages: ["Somali", "Arabic"],
+        currency: "Somali Shilling (SOS)",
       },
       {
         name: "South Africa",
         code: "za",
         capital: "Pretoria",
-        officialLanguages: ["Afrikaans", "English", "Zulu", "Xhosa"]
+        officialLanguages: ["Afrikaans", "English", "Zulu", "Xhosa"],
+        currency: "South African Rand (ZAR)",
       },
       {
         name: "South Sudan",
         code: "ss",
         capital: "Juba",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "South Sudanese Pound (SSP)",
       },
       {
         name: "Sudan",
         code: "sd",
         capital: "Khartoum",
-        officialLanguages: ["Arabic", "English"]
+        officialLanguages: ["Arabic", "English"],
+        currency: "Sudanese Pound (SDG)",
       },
       {
         name: "Tanzania",
         code: "tz",
         capital: "Dodoma",
-        officialLanguages: ["Swahili", "English"]
+        officialLanguages: ["Swahili", "English"],
+        currency: "Tanzanian Shilling (TZS)",
       },
       {
         name: "Togo",
         code: "tg",
         capital: "Lome",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "West African CFA franc (XOF)",
       },
       {
         name: "Tunisia",
         code: "tn",
         capital: "Tunis",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Tunisian Dinar (TND)",
       },
       {
         name: "Uganda",
         code: "ug",
         capital: "Kampala",
-        officialLanguages: ["English", "Swahili"]
+        officialLanguages: ["English", "Swahili"],
+        currency: "Ugandan Shilling (UGX)",
       },
       {
         name: "Zambia",
         code: "zm",
         capital: "Lusaka",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Zambian Kwacha (ZMW)",
       },
       {
         name: "Zimbabwe",
         code: "zw",
         capital: "Harare",
-        officialLanguages: ["English", "Shona", "Sindebele"]
+        officialLanguages: ["English", "Shona", "Sindebele"],
+        currency: "Zimbabwean Dollar (ZWL)",
       },
     ],
   },
@@ -335,301 +389,351 @@ const continents = [
         name: "Afghanistan",
         code: "af",
         capital: "Kabul",
-        officialLanguages: ["Pashto", "Dari"]
+        officialLanguages: ["Pashto", "Dari"],
+        currency: "Afghan Afghani (AFN)",
       },
       {
         name: "Armenia",
         code: "am",
         capital: "Yerevan",
-        officialLanguages: ["Armenian"]
+        officialLanguages: ["Armenian"],
+        currency: "Armenian Dram (AMD)",
       },
       {
         name: "Azerbaijan",
         code: "az",
         capital: "Baku",
-        officialLanguages: ["Azerbaijani"]
+        officialLanguages: ["Azerbaijani"],
+        currency: "Azerbaijani Manat (AZN)",
       },
       {
         name: "Bahrain",
         code: "bh",
         capital: "Manama",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Bahraini Dinar (BHD)",
       },
       {
         name: "Bangladesh",
         code: "bd",
         capital: "Dhaka",
-        officialLanguages: ["Bengali"]
+        officialLanguages: ["Bengali"],
+        currency: "Bangladeshi Taka (BDT)",
       },
       {
         name: "Bhutan",
         code: "bt",
         capital: "Thimphu",
-        officialLanguages: ["Dzongkha"]
+        officialLanguages: ["Dzongkha"],
+        currency: "Bhutanese Ngultrum (BTN)",
       },
       {
         name: "Brunei",
         code: "bn",
         capital: "Bandar Seri Begawan",
-        officialLanguages: ["Malay"]
+        officialLanguages: ["Malay"],
+        currency: "Brunei Dollar (BND)",
       },
       {
         name: "Cambodia",
         code: "kh",
         capital: "Phnom Penh",
-        officialLanguages: ["Khmer"]
+        officialLanguages: ["Khmer"],
+        currency: "Cambodian Riel (KHR)",
       },
       {
         name: "China",
         code: "cn",
         capital: "Beijing",
-        officialLanguages: ["Madarin"]
+        officialLanguages: ["Madarin"],
+        currency: "Chinese Yuan (CNY)",
       },
       {
         name: "Cyprus",
         code: "cy",
         capital: "Nicosia",
-        officialLanguages: ["Greek", "Turkish"]
+        officialLanguages: ["Greek", "Turkish"],
+        currency: "Euro (EUR)",
       },
       {
         name: "Georgia",
         code: "ge",
         capital: "Tbilisi",
-        officialLanguages: ["Georgian"]
+        officialLanguages: ["Georgian"],
+        currency: "Georgian Lari (GEL)",
       },
       {
         name: "India",
         code: "in",
         capital: "New Delhi",
-        officialLanguages: ["Hindi", "English"]
+        officialLanguages: ["Hindi", "English"],
+        currency: "Indian Rupee (INR)",
       },
       {
         name: "Indonesia",
         code: "id",
         capital: "Jakarta",
-        officialLanguages: ["Indonesian"]
+        officialLanguages: ["Indonesian"],
+        currency: "Indonesian Rupiah (IDR)",
       },
       {
         name: "Iran",
         code: "ir",
         capital: "Tehran",
-        officialLanguages: ["Persian"]
+        officialLanguages: ["Persian"],
+        currency: "Iranian Rial (IRR)",
       },
       {
         name: "Iraq",
         code: "iq",
         capital: "Baghdad",
-        officialLanguages: ["Arabic", "Kurdish"]
+        officialLanguages: ["Arabic", "Kurdish"],
+        currency: "Iraqi Dinar (IQD)",
       },
       {
         name: "Israel",
         code: "il",
         capital: "Jerusalem",
-        officialLanguages: ["Hebrew", "Arabic"]
+        officialLanguages: ["Hebrew", "Arabic"],
+        currency: "Israeli Shekel (ILS)",
       },
       {
         name: "Japan",
         code: "jp",
         capital: "Tokyo",
-        officialLanguages: ["Japanese"]
+        officialLanguages: ["Japanese"],
+        currency: "Japanese Yen (JPY)",
       },
       {
         name: "Jordan",
         code: "jo",
         capital: "Amman",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Jordanian Dinar (JOD)",
       },
       {
         name: "Kazakhstan",
         code: "kz",
         capital: "Nur-Sultan",
-        officialLanguages: ["Kazakh", "Russian"]
+        officialLanguages: ["Kazakh", "Russian"],
+        currency: "Kazakhstani Tenge (KZT)",
       },
       {
         name: "Kuwait",
         code: "kw",
         capital: "Kuwait City",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"], 
+        currency: "Kuwaiti Dinar (KWD)",
       },
       {
         name: "Kyrgyzstan",
         code: "kg",
         capital: "Bishkek",
-        officialLanguages: ["Kyrgyz", "Russian"]
+        officialLanguages: ["Kyrgyz", "Russian"],
+        currency: "Kyrgyzstani Som (KGS)",
       },
       {
         name: "Laos",
         code: "la",
         capital: "Vientiane",
-        officialLanguages: ["Lao"]
+        officialLanguages: ["Lao"],
+        currency: "Lao Kip (LAK)",
       },
       {
         name: "Lebanon",
         code: "lb",
         capital: "Beirut",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Lebanese Pound (LBP)",
       },
       {
         name: "Malaysia",
         code: "my",
         capital: "Kuala Lumpur",
-        officialLanguages: ["Malay"]
+        officialLanguages: ["Malay"],
+        currency: "Malaysian Ringgit (MYR)",
       },
       {
         name: "Maldives",
         code: "mv",
         capital: "Malé",
-        officialLanguages: ["Dhivehi"]
+        officialLanguages: ["Dhivehi"],
+        currency: "Maldivian Rufiyaa (MVR)",
       },
       {
         name: "Mongolia",
         code: "mn",
         capital: "Ulaanbaatar",
-        officialLanguages: ["Mongolian"]
+        officialLanguages: ["Mongolian"],
+        currency: "Mongolian Tugrik (MNT)",
       },
       {
         name: "Myanmar",
         code: "mm",
         capital: "Naypyidaw",
-        officialLanguages: ["Burmese"]
+        officialLanguages: ["Burmese"],
+        currency: "Myanmar Kyat (MMK)",
       },
       {
         name: "Nepal",
         code: "np",
         capital: "Kathmandu",
-        officialLanguages: ["Nepali"]
+        officialLanguages: ["Nepali"],
+        currency: "Nepalese Rupee (NPR)",
       },
       {
         name: "North Korea",
         code: "kp",
         capital: "Pyongyang",
-        officialLanguages: ["Korean"]
+        officialLanguages: ["Korean"],
+        currency: "North Korean Won (KPW)",
       },
       {
         name: "Oman",
         code: "om",
         capital: "Muscat",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Omani Rial (OMR)",
       },
       {
         name: "Pakistan",
         code: "pk",
         capital: "Islamabad",
-        officialLanguages: ["Urdu"]
+        officialLanguages: ["Urdu"],
+        currency: "Pakistani Rupee (PKR)",
       },
       {
         name: "Palestine",
         code: "ps",
         capital: "Ramallah",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Israeli New Shekel (ILS)",
       },
       {
         name: "Philippines",
         code: "ph",
         capital: "Manila",
-        officialLanguages: ["Tagalog", "English"]
+        officialLanguages: ["Tagalog", "English"],
+        currency: "Philippine Peso (PHP)",
       },
       {
         name: "Qatar",
         code: "qa",
         capital: "Doha",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Qatari Riyal (QAR)",
       },
       {
         name: "Russia",
         code: "ru",
         capital: "Moscow",
-        officialLanguages: ["Russian"]
+        officialLanguages: ["Russian"],
+        currency: "Russian Ruble (RUB)",  
       },
       {
         name: "Saudi Arabia",
         code: "sa",
         capital: "Riyadh",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Saudi Riyal (SAR)",
       },
       {
         name: "Singapore",
         code: "sg",
         capital: "Singapore",
-        officialLanguages: ["English", "Malay", "Mandarin", "Tamil"]
+        officialLanguages: ["English", "Malay", "Mandarin", "Tamil"],
+        currency: "Singapore Dollar (SGD)",
       },
       {
         name: "South Korea",
         code: "kr",
         capital: "Seoul",
-        officialLanguages: ["Korean"]
+        officialLanguages: ["Korean"],
+        currency: "South Korean Won (KRW)",
       },
       {
         name: "Sri Lanka",
         code: "lk",
         capital : "Sri Jayawardenepura Kotte",
-        officialLanguages: ["Sinhala", "Tamil"]
+        officialLanguages: ["Sinhala", "Tamil"],
+        currency: "Sri Lankan Rupee (LKR)",
       },
       {
         name: "Syria",
         code: "sy",
         capital: "Damascus",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Syrian Pound (SYP)",
       },
       {
         name: "Taiwan",
         code: "tw",
         capital: "Taipei",
-        officialLanguages: ["Mandarin"] 
+        officialLanguages: ["Mandarin"],
+        currency: "New Taiwan Dollar (TWD)",
       },
       {
         name: "Tajikistan",
         code: "tj",
         capital: "Dushanbe",
-        officialLanguages: ["Tajik"]
+        officialLanguages: ["Tajik"],
+        currency: "Tajikistani Somoni (TJS)",
       },
       {
         name: "Thailand",
         code: "th",
         capital: "Bangkok",
-        officialLanguages: ["Thai"]
+        officialLanguages: ["Thai"],
+        currency: "Thai Baht (THB)",
       },
       {
         name: "Timor-Leste",
         code: "tl",
         capital: "Dili",
-        officialLanguages: ["Portuguese", "Tetum"]
+        officialLanguages: ["Portuguese", "Tetum"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Turkey",
         code: "tr",
         capital: "Ankara",
-        officialLanguages: ["Turkish"]
+        officialLanguages: ["Turkish"],
+        currency: "Turkish Lira (TRY)",
       },
       {
         name: "Turkmenistan",
         code: "tm",
         capital: "Ashgabat",
-        officialLanguages: ["Turkmen"]
+        officialLanguages: ["Turkmen"],
+        currency: "Turkmenistan Manat (TMT)",
       },
       {
         name: "United Arab Emirates",
         code: "ae",
         capital: "Abu Dhabi",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "United Arab Emirates Dirham (AED)",
       },
       {
         name: "Uzbekistan",
         code: "uz",
         capital: "Tashkent",
-        officialLanguages: ["Uzbek"]
+        officialLanguages: ["Uzbek"],
+        currency: "Uzbekistan Som (UZS)",
       },
       {
         name: "Vietnam",
         code: "vn",
         capital: "Hanoi",
-        officialLanguages: ["Vietnamese"]
+        officialLanguages: ["Vietnamese"],
+        currency: "Vietnamese Dong (VND)",
       },
       {
         name: "Yemen",
         code: "ye",
         capital: "Sana'a",
-        officialLanguages: ["Arabic"]
+        officialLanguages: ["Arabic"],
+        currency: "Yemeni Rial (YER)",
       },
     ],
   },
@@ -640,259 +744,302 @@ const continents = [
         name: "Albania",
         code: "al",
         capital: "Tirana",
-        officialLanguages: ["Albanian"]
+        officialLanguages: ["Albanian"],
+        currency: "Albanian Lek (ALL)"
       },
       {
         name: "Andorra",
         code: "ad",
         capital: "Andorra la Vella",
-        officialLanguages: ["Catalan"]
+        officialLanguages: ["Catalan"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Austria",
         code: "at",
         capital: "Vienna",
-        officialLanguages: ["German"]
+        officialLanguages: ["German"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Belarus",
         code: "by",
         capital: "Minsk",
-        officialLanguages: ["Belarusian", "Russian"]
+        officialLanguages: ["Belarusian", "Russian"],
+        currency: "Belarusian Ruble (BYN)"
       },
       {
         name: "Belgium",
         code: "be",
         capital: "Brussels",
-        officialLanguages: ["Dutch", "French", "German"]
+        officialLanguages: ["Dutch", "French", "German"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Bosnia and Herzegovina",
         code: "ba",
         capital: "Sarajevo",
-        officialLanguages: ["Bosnian", "Croatian", "Serbian"]
+        officialLanguages: ["Bosnian", "Croatian", "Serbian"],
+        currency: "Bosnia and Herzegovina Convertible Mark (BAM)"
       },
       {
         name: "Bulgaria",
         code: "bg",
         capital: "Sofia",
-        officialLanguages: ["Bulgarian"]
+        officialLanguages: ["Bulgarian"],
+        currency: "Bulgarian Lev (BGN)"
       },
       {
         name: "Croatia",
         code: "hr",
         capital: "Zagreb",
-        officialLanguages: ["Croatian"]
+        officialLanguages: ["Croatian"],
+        currency: "Croatian Kuna (HRK)"
       },
       {
         name: "Czech Republic",
         code: "cz",
         capital: "Prague",
-        officialLanguages: ["Czech"]
+        officialLanguages: ["Czech"],
+        currency: "Czech Koruna (CZK)"
       },
       {
         name: "Denmark",
         code: "dk",
         capital: "Copenhagen",
-        officialLanguages: ["Danish"]
+        officialLanguages: ["Danish"],
+        currency: "Danish Krone (DKK)"
       },
       {
         name: "Estonia",
         code: "ee",
         capital: "Tallinn",
-        officialLanguages: ["Estonian"]
+        officialLanguages: ["Estonian"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Finland",
         code: "fi",
         capital: "Helsinki",
-        officialLanguages: ["Finnish", "Swedish"]
+        officialLanguages: ["Finnish", "Swedish"],
+        currency: "Euro (EUR)"
       },
       {
         name: "France",
         code: "fr",
         capital: "Paris",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Germany",
         code: "de",
         capital: "Berlin",
-        officialLanguages: ["German"]
+        officialLanguages: ["German"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Greece",
         code: "gr",
         capital: "Athens",
-        officialLanguages: ["Greek"]
+        officialLanguages: ["Greek"],
+         currency: "Algerian Dinar (DZD)"
       },
       {
         name: "Hungary",
         code: "hu",
         capital: "Budapest",
-        officialLanguages: ["Hungarian"]
+        officialLanguages: ["Hungarian"],
+        currency: "Hungarian Forint (HUF)",
       },
       {
         name: "Iceland",
         code: "is",
         capital: "Reykjavik",
-        officialLanguages: ["Icelandic"]
+        officialLanguages: ["Icelandic"],
+        currency: "Icelandic Krona (ISK)"
       },
       {
         name: "Ireland",
         code: "ie",
         capital: "Dublin",
-        officialLanguages: ["Irish", "English"]
+        officialLanguages: ["Irish", "English"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Italy",
         code: "it",
         capital: "Rome",
-        officialLanguages: ["Italian"]
+        officialLanguages: ["Italian"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Latvia",
         code: "lv",
         capital: "Riga",
-        officialLanguages: ["Latvian"]
+        officialLanguages: ["Latvian"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Liechtenstein",
         code: "li",
         capital: "Vaduz",
-        officialLanguages: ["German"]
+        officialLanguages: ["German"],
+        currency: "Swiss Franc (CHF)"
       },
       {
         name: "Lithuania",
         code: "lt",
         capital: "Vilnius",
-        officialLanguages: ["Lithuanian"]
+        officialLanguages: ["Lithuanian"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Luxembourg",
         code: "lu",
         capital: "Luxembourg",
-        officialLanguages: ["Luxembourgish", "French", "German"]
+        officialLanguages: ["Luxembourgish", "French", "German"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Malta",
         code: "mt",
         capital: "Valletta",
-        officialLanguages: ["Maltese", "English"]
+        officialLanguages: ["Maltese", "English"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Moldova",
         code: "md",
         capital: "Chisinau",
-        officialLanguages: ["Moldovan"]
+        officialLanguages: ["Moldovan"],
+        currency: "Moldovan Leu (MDL)"
       },
       {
         name: "Monaco",
         code: "mc",
         capital: "Monaco",
-        officialLanguages: ["French"]
+        officialLanguages: ["French"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Montenegro",
         code: "me",
         capital: "Podgorica",
-        officialLanguages: ["Montenegrin"]
+        officialLanguages: ["Montenegrin"],
+        currency: "Euro (EUR)"
       },
       {
         name: "Netherlands",
         code: "nl",
         capital: "Amsterdam",
-        officialLanguages: ["Dutch"]
+        officialLanguages: ["Dutch"],
+        currency: "Euro (EUR)"
       },
       {
         name: "North Macedonia",
         code: "mk",
         capital: "Skopje",
-        officialLanguages: ["Macedonian"]
+        officialLanguages: ["Macedonian"],
+        currency: "Macedonian Denar (MKD)",
       },
       {
         name: "Norway",
         code: "no",
         capital: "Oslo",
-        officialLanguages: ["Norwegian"]
+        officialLanguages: ["Norwegian"],
+        currency: "Norwegian Krone (NOK)",
       },
       {
         name: "Poland",
         code: "pl",
         capital: "Warsaw",
-        officialLanguages: ["Polish"]
+        officialLanguages: ["Polish"],
+        currency: "Polish Zloty (PLN)",
       },
       {
         name: "Portugal",
         code: "pt",
         capital: "Lisbon",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"], 
+        currency: "Euro (EUR)",
       },
       {
         name: "Romania",
         code: "ro",
         capital: "Bucharest",
-        officialLanguages: ["Romanian"]
+        officialLanguages: ["Romanian"],
+        currency: "Romanian Leu (RON)",
       },
       {
         name: "San Marino",
         code: "sm",
         capital: "San Marino",
-        officialLanguages: ["Italian"]
+        officialLanguages: ["Italian"],
+        currency: "Euro (EUR)",
       },
       {
         name: "Serbia",
         code: "rs",
         capital: "Belgrade",
-        officialLanguages: ["Serbian"]
+        officialLanguages: ["Serbian"],
+        currency: "Serbian Dinar (RSD)",
       },
       {
         name: "Slovakia",
         code: "sk",
         capital: "Bratislava",
-        officialLanguages: ["Slovak"]
+        officialLanguages: ["Slovak"],
+        currency: "Euro (EUR)",
       },
       {
         name: "Slovenia",
         code: "si",
         capital: "Ljubljana",
-        officialLanguages: ["Slovene"]
+        officialLanguages: ["Slovene"],
+        currency: "Euro (EUR)",
       },
       {
         name: "Spain",
         code: "es",
         capital: "Madrid",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Euro (EUR)",
       },
       {
         name: "Sweden",
         code: "se",
         capital: "Stockholm",
-        officialLanguages: ["Swedish"]
+        officialLanguages: ["Swedish"],
+        currency: "Swedish Krona (SEK)",
       },
       {
         name: "Switzerland",
         code: "ch",
         capital: "Bern",
-        officialLanguages: ["German", "French", "Italian", "Romansh"]
+        officialLanguages: ["German", "French", "Italian", "Romansh"],
+        currency: "Swiss Franc (CHF)",
       },
       {
         name: "Ukraine",
         code: "ua",
         capital: "Kyiv",
-        officialLanguages: ["Ukrainian"]
+        officialLanguages: ["Ukrainian"],
+        currency: "Ukrainian Hryvnia (UAH)",  
       },
       {
         name: "United Kingdom",
         code: "gb",
         capital: "London",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "British Pound (GBP)",
       },
       {
         name: "Vatican City",
         code: "va",
         capital: "Vatican City",
-        officialLanguages: ["Italian"]
+        officialLanguages: ["Italian"],
+        currency: "Euro (EUR)",
       },
     ],
   },
@@ -903,141 +1050,164 @@ const continents = [
         name: "Antigua and Barbuda",
         code: "ag",
         capital: "Saint John's",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
       },
       {
         name: "Bahamas",
         code: "bs",
         capital: "Nassau",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Bahamian Dollar (BSD)",
       },
       {
         name: "Barbados",
         code: "bb",
         capital: "Bridgetown",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Barbadian Dollar (BBD)",
       },
       {
         name: "Belize",
         code: "bz",
         capital: "Belmopan",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"], 
+        currency: "Belize Dollar (BZD)",
       },
       {
         name: "Canada",
         code: "ca",
         capital: "Ottawa",
-        officialLanguages: ["English", "French"]
+        officialLanguages: ["English", "French"],
+        currency: "Canadian Dollar (CAD)",
       },
       {
         name: "Costa Rica",
         code: "cr",
         capital: "San Jos ",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Costa Rican Colon (CRC)",
       },
       {
         name: "Cuba",
         code: "cu",
         capital: "Havana",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Cuban Peso (CUP)",
       },
       {
         name: "Dominica",
         code: "dm",
         capital: "Roseau",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
       },
       {
         name: "Dominican Republic",
         code: "do",
         capital: "Santo Domingo",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Dominican Peso (DOP)",
       },
       {
         name: "El Salvador",
         code: "sv",
         capital: "San Salvador",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Grenada",
         code: "gd",
         capital: "Saint George's",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
       },
       {
         name: "Guatemala",
         code: "gt",
         capital: "Guatemala City",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Guatemalan Quetzal (GTQ)",
       },
       {
         name: "Haiti",
         code: "ht",
         capital: "Port-au-Prince",
-        officialLanguages: ["French", "Haitian Creole"]
+        officialLanguages: ["French", "Haitian Creole"],
+        currency: "Haitian Gourde (HTG)",
       },
       {
         name: "Honduras",
         code: "hn",
         capital: "Tegucigalpa",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Honduran Lempira (HNL)",
       },
       {
         name: "Jamaica",
         code: "jm",
         capital: "Kingston",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Jamaican Dollar (JMD)",
       },
       {
         name: "Mexico",
         code: "mx",
         capital: "Mexico City",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Mexican Peso (MXN)",
       },
       {
         name: "Nicaragua",
         code: "ni",
         capital: "Managua",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Nicaraguan Cordoba (NIO)",
 
       },
       {
         name: "Panama",
         code: "pa",
         capital: "Panama City",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Panamanian Balboa (PAB)",
       },
       {
         name: "Saint Kitts and Nevis",
         code: "kn",
         capital: "Basseterre",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
       },
       {
         name: "Saint Lucia",
         code: "lc",
         capital: "Castries",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
       },
       {
         name: "Saint Vincent and the Grenadines",
         code: "vc",
         capital: "Kingstown",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "East Caribbean Dollar (XCD)",
 
       },
       {
         name: "Trinidad and Tobago",
         code: "tt",
         capital: "Port of Spain",
-        officialLanguages: ["English "] 
+        officialLanguages: ["English "],
+        currency: "Trinidad and Tobago Dollar (TTD)",
       },
       {
         name: "United States",
         code: "us",
         capital: "Washington, D.C.",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "United States Dollar (USD)",
       },
     ],
   },
@@ -1048,85 +1218,99 @@ const continents = [
         name: "Australia",
         code: "au",
         capital: "Canberra",
-        officialLanguages : ["English"]
+        officialLanguages : ["English"],
+        currency: "Australian Dollar (AUD)",
       },
       {
         name: "Fiji",
         code: "fj",
         capital: "Suva",
-        officialLanguages: ["English", "Fijian", "Hindi"]
+        officialLanguages: ["English", "Fijian", "Hindi"],
+        currency: "Fijian Dollar (FJD)",
       },
       {
         name: "Kiribati",
         code: "ki",
         capital: "South Tarawa",
-        officialLanguages: ["English", "Gilbertese"]
+        officialLanguages: ["English", "Gilbertese"],
+        currency: "Australian Dollar (AUD)",
       },
       {
         name: "Marshall Islands",
         code: "mh",
         capital: "Majuro",
-        officialLanguages: ["English", "Marshallese"]
+        officialLanguages: ["English", "Marshallese"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Micronesia",
         code: "fm",
         capital: "Palikir",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Nauru",
         code: "nr",
         capital: "Yaren",
-        officialLanguages: ["English", "Nauruan"]
+        officialLanguages: ["English", "Nauruan"],
+        currency: "Australian Dollar (AUD)",
       },
       {
         name: "New Zealand",
         code: "nz",
         capital: "Wellington",
-        officialLanguages: ["English", "Maori"]
+        officialLanguages: ["English", "Maori"],
+        currency: "New Zealand Dollar (NZD)",
       },
       {
         name: "Palau",
         code: "pw",
         capital: "Ngerulmud",
-        officialLanguages: ["English", "Palauan"]
+        officialLanguages: ["English", "Palauan"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Papua New Guinea",
         code: "pg",
         capital: "Port Moresby",
-        officialLanguages: ["English", "Hiri Motu", "Tok Pisin"]
+        officialLanguages: ["English", "Hiri Motu", "Tok Pisin"],
+        currency: "Papua New Guinean Kina (PGK)",
       },
       {
         name: "Samoa",
         code: "ws",
         capital: "Apia",
-        officialLanguages: ["Samoan", "English"]
+        officialLanguages: ["Samoan", "English"],
+        currency: "Samoan Tala (WST)",
       },
       {
         name: "Solomon Islands",
         code: "sb",
         capital: "Honiara",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Solomon Islands Dollar (SBD)",
       },
       {
         name: "Tonga",
         code: "to",
         capital: "Nuku'alofa",
-        officialLanguages: ["English  "]
+        officialLanguages: ["English  "],
+        currency: "Tongan Pa'anga (TOP)",
       },
       {
         name: "Tuvalu",
         code: "tv",
         capital: "Funafuti",
-        officialLanguages: ["English", "Tuvaluan"]
+        officialLanguages: ["English", "Tuvaluan"],
+        currency: "Australian Dollar (AUD)",
       },
       {
         name: "Vanuatu",
         code: "vu",
         capital: "Port Vila",
-        officialLanguages: ["Bislama", "English", "French"]
+        officialLanguages: ["Bislama", "English", "French"],
+        currency: "Vanuatu Vatu (VUV)",
       },
     ],
   },
@@ -1137,73 +1321,85 @@ const continents = [
         name: "Argentina",
         code: "ar",
         capital: "Buenos Aires",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Argentine Peso (ARS)",
       },
       {
         name: "Bolivia",
         code: "bo",
         capital: "Sucre",
-        officialLanguages: ["Spanish", "Quechua", "Aymara"]
+        officialLanguages: ["Spanish", "Quechua", "Aymara"],
+        currency: "Bolivian Boliviano (BOB)",
       },
       {
         name: "Brazil",
         code: "br",
         capital: "Brasília",
-        officialLanguages: ["Portuguese"]
+        officialLanguages: ["Portuguese"],
+        currency: "Brazilian Real (BRL)",
       },
       {
         name: "Chile",
         code: "cl",
         capital: "Santiago",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Chilean Peso (CLP)",
       },
       {
         name: "Colombia",
         code: "co",
         capital: "Bogot ",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Colombian Peso (COP)",
       },
       {
         name: "Ecuador",
         code: "ec",
         capital: "Quito",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "United States Dollar (USD)",
       },
       {
         name: "Guyana",
         code: "gy",
         capital: "Georgetown",
-        officialLanguages: ["English"]
+        officialLanguages: ["English"],
+        currency: "Guyanese Dollar (GYD)",
       },
       {
         name: "Paraguay",
         code: "py",
         capital: "Asunci ",
-        officialLanguages: ["Spanish", "Guarani"]
+        officialLanguages: ["Spanish", "Guarani"],
+        currency: "Paraguayan Guarani (PYG)",
       },
       {
         name: "Peru",
         code: "pe",
         capital: "Lima",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Peruvian Nuevo Sol (PEN)",
       },
       {
         name: "Suriname",
         code: "sr",
         capital: "Paramaribo",
-        officialLanguages: ["Dutch"]
+        officialLanguages: ["Dutch"],
+        currency: "Surinamese Dollar (SRD)",
       },
       {
         name: "Uruguay",
         code: "uy",
         capital: "Montevideo",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Uruguayan Peso (UYU)",
       },
       {
         name: "Venezuela",
         code: "ve",
         capital: "Caracas",
-        officialLanguages: ["Spanish"]
+        officialLanguages: ["Spanish"],
+        currency: "Venezuelan Bolivar (VES)",
       },
     ],
   },
