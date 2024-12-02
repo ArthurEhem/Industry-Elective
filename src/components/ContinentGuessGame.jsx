@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import navigate hook
 import { continents } from "../data/continentsquiz";
+import confetti from "canvas-confetti";
 
 const CountryQuizGame = () => {
+  const navigate = useNavigate();  // Hook to navigate
   const [allCountries, setAllCountries] = useState([]);
   const [currentCountry, setCurrentCountry] = useState(null);
   const [currentQuestionType, setCurrentQuestionType] = useState("");
@@ -131,6 +134,12 @@ const CountryQuizGame = () => {
     generateNextQuestion();
   };
 
+  useEffect(() => {
+    if (gameOver) {
+      confetti(); // Trigger the confetti effect
+    }
+  }, [gameOver]);
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold mb-8">Country Quiz</h1>
@@ -143,6 +152,12 @@ const CountryQuizGame = () => {
             className="mt-6 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-lg transition"
           >
             Play Again
+          </button>
+          <button
+            onClick={() => navigate("/", { replace: true })} // Redirect to home page
+            className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-lg transition"
+          >
+            Quit
           </button>
         </div>
       ) : currentCountry ? (

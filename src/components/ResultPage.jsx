@@ -1,4 +1,6 @@
+import React, { useEffect } from "react";  // Import useEffect
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";  // Import confetti
 
 function secondsToHMS(seconds) {
   const h = Math.floor(seconds / 3600)
@@ -16,6 +18,17 @@ function ResultPage() {
   const navigate = useNavigate();
 
   const data = location.state.data;
+
+  // Trigger confetti when the result page is loaded
+  useEffect(() => {
+    // Trigger the confetti effect once the page is loaded
+    confetti({
+      particleCount: 150,   // Number of particles
+      angle: 90,            // Direction (90 degrees to shoot horizontally)
+      spread: 45,           // Spread of particles
+      origin: { x: 0.5, y: 0.5 }  // Start position (center of the page)
+    });
+  }, []);
 
   function handleRetryClick() {
     navigate("/game", {
