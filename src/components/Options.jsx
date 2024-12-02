@@ -13,7 +13,7 @@ function Options() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+    <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>

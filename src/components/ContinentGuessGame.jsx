@@ -142,7 +142,7 @@ const CountryQuizGame = () => {
   }, [gameOver]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white flex flex-col items-center justify-center px-6 py-8">
+    <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
       <h1 className="text-5xl font-bold mb-10 text-center">Country Quiz</h1>
       {gameOver ? (
