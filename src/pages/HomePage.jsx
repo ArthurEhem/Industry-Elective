@@ -1,10 +1,15 @@
+import React, { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import NavigationBar from "../components/NavigationBar";
+import hoverSound from '/Hover.mp3';
+import clickSound from '/Click.mp3';
 
 function HomePage() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const audioRef = useRef(new Audio(hoverSound));
+  const clickAudioRef = useRef(new Audio(clickSound));
 
   // Function to handle opening and closing the modal
   const toggleModal = () => {
@@ -16,6 +21,16 @@ function HomePage() {
     if (e.target.id === "modal-overlay") {
       setShowModal(false);
     }
+  };
+
+  const playHoverSound = () => { 
+    audioRef.current.currentTime = 0; 
+    audioRef.current.play(); 
+  };
+
+  const playClickSound = () => { 
+    clickAudioRef.current.currentTime = 0; 
+    clickAudioRef.current.play(); 
   };
 
   return (
@@ -30,7 +45,8 @@ function HomePage() {
               fontFamily: "'Baloo', sans-serif",
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
             }}
-            onClick={toggleModal}
+            onClick={() => { toggleModal(); playClickSound(); }}
+            onMouseEnter={playHoverSound}
           >
             PLAY
         </button>
@@ -47,7 +63,8 @@ function HomePage() {
             {/* X button in the top-right corner */}
             <button
               className="absolute top-0.5 right-2 text-gray-800 text-xl font-bold hover:text-red-500"
-              onClick={toggleModal}
+              onClick={() => { toggleModal(); playClickSound(); }}
+              onMouseEnter={playHoverSound}
             >
               ×
             </button>
@@ -56,19 +73,22 @@ function HomePage() {
             <div className="space-y-4">
               <button
                 className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => navigate("/options")}
+                onClick={() => { navigate("/options"); playClickSound(); }}
+                onMouseEnter={playHoverSound}
               >
                 World Flag Challenge
               </button>
               <button
                 className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => navigate("/ContinentGuessGame")}
+                onClick={() => { navigate("/ContinentGuessGame"); playClickSound();}}
+                onMouseEnter={playHoverSound}
               >
                 Continent Quiz Game
               </button>
               <button
                 className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => navigate("/library")}
+                onClick={() => { navigate("/library"); playClickSound();}}
+                onMouseEnter={playHoverSound}
               >
                 More About the Flags
               </button>
