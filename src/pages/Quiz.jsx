@@ -103,7 +103,7 @@ function Quiz() {
 
       {/* Place the 'Incorrect' message lower */}
       {showWrong && (
-        <div className="absolute top-32 text-3xl font-bold text-red-600 animate-pulse">
+        <div className="absolute top-32 text-5xl font-bold text-red-600 animate-pulse">
           Incorrect
         </div>
       )}
