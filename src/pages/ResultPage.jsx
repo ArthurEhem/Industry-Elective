@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";  // Import useEffect
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import confetti from "canvas-confetti";  // Import confetti
+import confetti from "canvas-confetti"; // Import confetti
+import clapBocchiGif from "../assets/clap-bocchi.gif";
 
 function secondsToHMS(seconds) {
   const h = Math.floor(seconds / 3600)
@@ -23,10 +24,10 @@ function ResultPage() {
   useEffect(() => {
     // Trigger the confetti effect once the page is loaded
     confetti({
-      particleCount: 150,   // Number of particles
-      angle: 90,            // Direction (90 degrees to shoot horizontally)
-      spread: 45,           // Spread of particles
-      origin: { x: 0.5, y: 0.5 }  // Start position (center of the page)
+      particleCount: 150, // Number of particles
+      angle: 90, // Direction (90 degrees to shoot horizontally)
+      spread: 45, // Spread of particles
+      origin: { x: 0.5, y: 0.5 }, // Start position (center of the page)
     });
   }, []);
 
@@ -42,7 +43,7 @@ function ResultPage() {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+    <div className="relative flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-4">Summary</h1>
         <div className="space-y-6">
@@ -82,6 +83,13 @@ function ResultPage() {
           </button>
         </div>
       </div>
+      
+      {/* GIF at the bottom-right corner */}
+      <img
+        src={clapBocchiGif}
+        alt="Clapping Bocchi"
+        className="absolute bottom-4 right-4 w-24 h-auto"
+      />
     </div>
   );
 }

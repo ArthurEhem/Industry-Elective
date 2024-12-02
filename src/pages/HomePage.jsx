@@ -24,15 +24,15 @@ function HomePage() {
       <div className="flex flex-col items-center justify-center flex-grow">
         <img src="/Title.png" alt="Title" className="mb-8 animate-pulse-custom" />
         <button
-          type="button"
-          className="w-full max-w-md rounded-3xl bg-gradient-to-r from-blue-600 to-pink-500 py-3 text-5xl font-bold text-white shadow-lg hover:from-blue-700 hover:to-pink-400 active:scale-95 transform transition-all duration-150 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          style={{
-            fontFamily: "'Baloo', sans-serif",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
-          }}
-          onClick={toggleModal}
-        >
-          PLAY
+            type="button"
+            className="w-full max-w-md rounded-3xl bg-gradient-to-r from-blue-600 to-pink-500 py-3 text-5xl font-bold text-white shadow-lg hover:from-blue-700 hover:to-pink-400 active:scale-95 transform transition-all duration-150 focus:outline-none focus:ring-4 focus:ring-blue-300 animate-pulse-custom"
+            style={{
+              fontFamily: "'Baloo', sans-serif",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+            }}
+            onClick={toggleModal}
+          >
+            PLAY
         </button>
       </div>
 
