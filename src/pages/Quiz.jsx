@@ -92,7 +92,7 @@ function Quiz() {
   const accuracy = totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
   <NavigationBar />
 
   {/* Place the 'Incorrect' message lower */}
@@ -101,23 +101,6 @@ function Quiz() {
       Incorrect
     </div>
   )}
-
-  {/* Retry and Quit buttons */}
-  <div className="mt-8 flex gap-8">
-    <button
-      onClick={() => navigate(0)}
-      className="rounded-lg bg-blue-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-transform duration-150"
-    >
-      Retry
-    </button>
-    <button
-      onClick={() => navigate("/", { replace: true })}
-      className="rounded-lg bg-red-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-red-700 active:scale-95 transition-transform duration-150"
-    >
-      Quit
-    </button>
-  </div>
-
   {/* Country and Accuracy Display */}
   <div className="text-center mt-12">
     <h1 className="text-5xl font-extrabold text-blue-700 mb-4">{currentCountry && currentCountry.name}</h1>
@@ -148,6 +131,22 @@ function Quiz() {
         />
       </div>
     ))}
+  </div>
+
+  {/* Retry and Quit buttons */}
+  <div className="mt-8 flex gap-8">
+    <button
+      onClick={() => navigate(0)}
+      className="rounded-lg bg-blue-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-transform duration-150"
+    >
+      Retry
+    </button>
+    <button
+      onClick={() => navigate("/", { replace: true })}
+      className="rounded-lg bg-red-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-red-700 active:scale-95 transition-transform duration-150"
+    >
+      Quit
+    </button>
   </div>
 
   {/* Shuffle Button */}
