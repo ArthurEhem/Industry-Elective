@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import navigate hook
 import { continents } from "../data/continentsquiz";
 import confetti from "canvas-confetti";
+import NavigationBar from "./NavigationBar";
 
 const CountryQuizGame = () => {
   const navigate = useNavigate();  // Hook to navigate
@@ -141,39 +142,40 @@ const CountryQuizGame = () => {
   }, [gameOver]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold mb-8">Country Quiz</h1>
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white flex flex-col items-center justify-center px-6 py-8">
+      <NavigationBar />
+      <h1 className="text-5xl font-bold mb-10 text-center">Country Quiz</h1>
       {gameOver ? (
         <div className="text-center">
-          <h2 className="text-3xl font-semibold mb-4">Game Over!</h2>
-          <p className="text-xl">Your score: {score} / 10</p>
+          <h2 className="text-4xl font-semibold mb-6">Game Over!</h2>
+          <p className="text-2xl mb-6">Your score: {score} / 10</p>
           <button
             onClick={resetGame}
-            className="mt-6 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-lg transition"
+            className="mt-6 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-xl transition ease-in-out duration-200 transform hover:scale-105"
           >
             Play Again
           </button>
           <button
             onClick={() => navigate("/", { replace: true })} // Redirect to home page
-            className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-lg transition"
+            className="mt-10 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-xl transition ease-in-out duration-200 transform hover:scale-105"
           >
             Quit
           </button>
         </div>
       ) : currentCountry ? (
-        <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg w-96">
-          <p className="text-lg font-medium text-center mb-4">
+        <div className="bg-white text-gray-800 p-10 rounded-3xl shadow-2xl w-full max-w-2xl">
+          <p className="text-xl font-medium text-center mb-6">
             Question {questionCount + 1} of 10 ({currentQuestionType})
           </p>
-          <p className="text-2xl font-bold text-center mb-6">
+          <p className="text-3xl font-bold text-center mb-8">
             {questionTypes.find(q => q.type === currentQuestionType).generateQuestion(currentCountry).question}
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             {options.map((option) => (
               <button
                 key={option}
                 onClick={() => handleAnswer(option)}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition ease-in-out duration-200 transform hover:scale-105"
               >
                 {option}
               </button>
