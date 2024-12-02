@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import navigate hook
 import { continents } from "../data/continentsquiz";
 import confetti from "canvas-confetti";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 
 const CountryQuizGame = () => {
   const navigate = useNavigate();  // Hook to navigate

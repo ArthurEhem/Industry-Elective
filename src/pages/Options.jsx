@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { continents } from "../data/continents";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 
 const difficultyOptions = ["Normal", "Hard"];
 

@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import rightSound from '/Right.mp3'; 
 import wrongSound from '/Wrong.mp3';
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 
 function shuffle(array) {
   const newArray = [...array];

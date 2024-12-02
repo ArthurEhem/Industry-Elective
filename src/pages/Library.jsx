@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 import { continents } from "../data/continents";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 
 function Library() {
   const navigate = useNavigate(); // Initialize the navigate function

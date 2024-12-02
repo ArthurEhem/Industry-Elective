@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import Quiz from "./components/Quiz";
-import ResultPage from "./components/ResultPage";
+import HomePage from "./pages/HomePage";
+import Quiz from "./pages/Quiz";
+import ResultPage from "./pages/ResultPage";
 import Layout from "./components/Layout";
-import Options from "./components/Options";
-import Library from "./components/Library";
-import ContinentGuessGame from "./components/ContinentGuessGame";
+import Options from "./pages/Options";
+import Library from "./pages/Library";
+import ContinentGuessGame from "./pages/ContinentGuessGame";
 
 const browserRouter = createBrowserRouter([
   {
