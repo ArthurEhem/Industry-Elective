@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti"; // Import confetti
 import clapBocchiGif from "../assets/clap-bocchi.gif";
 import MusicPlayer from "../components/MusicPlayer";
@@ -18,18 +18,25 @@ function secondsToHMS(seconds) {
 function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
-
   const data = location.state.data;
 
   // Trigger confetti when the result page is loaded
   useEffect(() => {
-    // Trigger the confetti effect once the page is loaded
-    confetti({
-      particleCount: 150, // Number of particles
-      angle: 90, // Direction (90 degrees to shoot horizontally)
-      spread: 45, // Spread of particles
-      origin: { x: 0.5, y: 0.5 }, // Start position (center of the page)
-    });
+    const confettiInterval = setInterval(() => {
+      confetti({
+        particleCount: Math.floor(Math.random() * 50) + 50, // Random number of particles between 50 and 100
+        angle: Math.random() * 360, // Random direction
+        spread: 100, // Spread of particles
+        startVelocity: 30,
+        origin: {
+          x: Math.random(), // Random x position
+          y: Math.random(), // Random y position
+        },
+      });
+    }, 1000); // Adjust the interval time as needed
+
+    // Clear interval on component unmount
+    return () => clearInterval(confettiInterval);
   }, []);
 
   function handleRetryClick() {
@@ -44,9 +51,19 @@ function ResultPage() {
   }
 
   return (
-    
     <div className="relative flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
       <MusicPlayer src="/Loop02.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'url(/Flags01.gif)',
+          backgroundSize: '100%',
+          backgroundPosition: 'bottom',
+          opacity: 0.2,
+          zIndex: 0, // Ensure the background is behind all other content
+        }}
+      ></div>
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-4">Summary</h1>
         <div className="space-y-6">
