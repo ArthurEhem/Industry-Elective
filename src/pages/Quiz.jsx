@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import rightSound from '/Right.mp3'; 
 import wrongSound from '/Wrong.mp3';
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";
 import momoiGif from "../assets/momoiR.gif"; // Import the GIF
 
 function shuffle(array) {
@@ -100,6 +101,7 @@ function Quiz() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
+      <MusicPlayer src="/Loop01.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
 
       {/* Place the 'Incorrect' message lower */}
       {showWrong && (

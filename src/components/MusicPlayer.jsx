@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 
 const MusicPlayer = forwardRef((props, ref) => {
+  const { src, volume } = props;
   const audioRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
@@ -12,6 +13,9 @@ const MusicPlayer = forwardRef((props, ref) => {
     },
     isPlaying: () => {
       return !audioRef.current.paused;
+    },
+    setVolume: (newVolume) => {
+      audioRef.current.volume = newVolume;
     }
   }));
 
@@ -30,8 +34,12 @@ const MusicPlayer = forwardRef((props, ref) => {
     playAudio();
   }, []);
 
+  useEffect(() => {
+    audioRef.current.volume = volume !== undefined ? volume : 1;
+  }, [volume]);
+
   return (
-    <audio ref={audioRef} src="/Background.mp3" loop></audio>
+    <audio ref={audioRef} src={src} loop></audio>
   );
 });
 

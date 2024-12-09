@@ -4,6 +4,7 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } fro
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { continents } from "../data/continents";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";
 
 const difficultyOptions = ["Normal", "Hard"];
 
@@ -15,6 +16,7 @@ function Options() {
   return (
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
+      <MusicPlayer src="/Loop02.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>
         

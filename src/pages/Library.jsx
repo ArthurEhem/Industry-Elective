@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 import { continents } from "../data/continents";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";
 
 function Library() {
   const navigate = useNavigate(); // Initialize the navigate function
@@ -9,6 +10,7 @@ function Library() {
   return (
     <div className="flex flex-col items-center justify-start bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen">
       <NavigationBar /> {/* Include the Navigation Bar */}
+      <MusicPlayer src="/Loop03.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
 
       {/* Adjusted Back Button */}
       <button

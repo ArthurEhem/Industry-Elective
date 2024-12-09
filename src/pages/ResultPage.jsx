@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti"; // Import confetti
 import clapBocchiGif from "../assets/clap-bocchi.gif";
+import MusicPlayer from "../components/MusicPlayer";
 
 function secondsToHMS(seconds) {
   const h = Math.floor(seconds / 3600)
@@ -43,7 +44,9 @@ function ResultPage() {
   }
 
   return (
+    
     <div className="relative flex h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <MusicPlayer src="/Loop02.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-4">Summary</h1>
         <div className="space-y-6">
