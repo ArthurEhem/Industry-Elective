@@ -17,6 +17,17 @@ function Options() {
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
       <MusicPlayer src="/Loop02.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'url(/Flags01.gif)',
+          backgroundSize: '100%',
+          backgroundPosition: 'top',
+          opacity: 0.2,
+          zIndex: 0, // Ensure the background is behind all other content
+        }}
+      ></div>
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>
         
