@@ -15,7 +15,7 @@ function shuffle(array) {
 }
 
 function Quiz() {
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([]); 
   const [currentCountry, setCurrentCountry] = useState(null);
   const [flagOptions, setFlagOptions] = useState([]);
   const [correctClicks, setCorrectClicks] = useState(0);
@@ -61,21 +61,55 @@ function Quiz() {
 
   function handleClick(country) {
     setTotalClicks(totalClicks + 1);
-
+  
+    // If the answer is correct
     if (country.name === currentCountry.name) {
       setCorrectClicks(correctClicks + 1);
       playAudio(rightAudioRef);
     } else {
+      // Handle incorrect answer
       playAudio(wrongAudioRef);
       setShowWrong(true);
-      setShowGif(true); // Show the GIF when the answer is wrong
+      setShowGif(true);
+  
+      // Check if this is the second-to-last flag
+      if (countries.length === 2) {
+        // Mark the last remaining flag as "wrong" as well
+        setTimeout(() => {
+          setShowWrong(false);
+          setShowGif(false);
+  
+          // Redirect to results as the game ends
+          navigate("/game/results", {
+            state: {
+              data: {
+                accuracy: ((correctClicks / (totalClicks + 1)) * 100).toFixed(2), // Add the extra incorrect attempt
+                score: correctClicks,
+                total: totalClicks + 1, // Reflect the total number of attempts correctly
+                continent: continent,
+                difficulty: difficulty,
+              },
+            },
+          });
+        }, 500);
+        return; // Exit here since the game ends after this.
+      }
+  
+      // Hide the feedback after a short timeout for regular incorrect answers
       setTimeout(() => {
         setShowWrong(false);
-        setShowGif(false); // Hide the GIF after 1 second
+        setShowGif(false);
       }, 500);
     }
-
-    if (countries.length <= 1) {
+  
+    // Continue with the game logic if more than two flags remain
+    if (countries.length > 1) {
+      setCountries(countries.filter((c) => c.name !== currentCountry.name));
+      const nextCountry = countries[Math.floor(Math.random() * countries.length)];
+      setCurrentCountry(nextCountry);
+      generateFlagOptions(nextCountry);
+    } else {
+      // Navigate to results page if the game is over
       navigate("/game/results", {
         state: {
           data: {
@@ -87,13 +121,9 @@ function Quiz() {
           },
         },
       });
-    } else {
-      setCountries(countries.filter((c) => c.name !== currentCountry.name));
-      const nextCountry = countries[Math.floor(Math.random() * countries.length)];
-      setCurrentCountry(nextCountry);
-      generateFlagOptions(nextCountry);
     }
   }
+  
 
   const accuracy = totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
