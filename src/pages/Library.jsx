@@ -67,7 +67,7 @@ function Library() {
                       alt={`${country.name} flag`}
                       className="w-20 h-12 object-cover mb-2"
                     />
-                    <span className="text-sm text-gray-700">{country.name}</span>
+                    <span className="text-sm font-bold text-gray-700 animate-pulse-custom">{country.name}</span>
                   </a>
                 ))}
               </div>
