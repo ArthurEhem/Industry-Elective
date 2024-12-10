@@ -133,19 +133,19 @@ function Quiz() {
 
       {/* Place the 'Incorrect' message lower */}
       {showWrong && (
-        <div className="absolute top-32 text-3xl font-bold text-red-600 animate-pulse">
-          Incorrect
-        </div>
-      )}
-
-      {/* Show the GIF when wrong */}
+      <div className="absolute top-32 flex flex-col items-center text-3xl font-bold text-red-600 animate-pulse">
+    <div className="flex items-center">
+      <span>Incorrect</span>
       {showGif && (
         <img
           src={momoiGif}
           alt="Momoi Reaction"
-          className="absolute top-48 mx-auto h-24 w-24"
+          className="ml-4 h-16 w-16"
         />
       )}
+    </div>
+  </div>
+)}
 
       {/* Country and Accuracy Display */}
       <div className="text-center mt-12">
