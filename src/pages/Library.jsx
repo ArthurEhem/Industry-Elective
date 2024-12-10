@@ -24,7 +24,7 @@ function Library() {
   return (
     <div className="flex flex-col items-center justify-start bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen overflow-hidden">
       <NavigationBar /> {/* Include the Navigation Bar */}
-      <MusicPlayer src="/Loop03.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
+      <MusicPlayer src="/Loop01.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
       <div
         className="absolute inset-0"
         style={{
