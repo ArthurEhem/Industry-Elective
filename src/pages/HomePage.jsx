@@ -54,48 +54,48 @@ function HomePage() {
 
       {/* Modal for displaying options */}
       {showModal && (
-        <div
-          id="modal-overlay"
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20"
-          onClick={closeModalOnClickOutside}
-        >
-          <div className="relative bg-gradient-to-br from-blue-300 to-pink-300 p-8 rounded-lg shadow-xl w-96 max-w-md transform transition-all duration-300 ease-in-out scale-110">
-            {/* X button in the top-right corner */}
+      <div
+        id="modal-overlay"
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20"
+        onClick={closeModalOnClickOutside}
+      >
+        <div className="relative bg-gradient-to-br from-blue-300 to-pink-300 p-8 rounded-lg shadow-xl w-96 max-w-md transform transition-all duration-300 ease-in-out scale-110">
+          {/* X button in the top-right corner */}
+          <button
+            className="absolute top-0.5 right-2 text-gray-800 text-xl font-bold hover:text-red-500"
+            onClick={() => { toggleModal(); playClickSound(); }}
+            onMouseEnter={playHoverSound}
+          >
+            ×
+          </button>
+          
+          <h2 className="text-2xl font-bold text-center mb-6 text-purple-600">Choose an Option</h2>
+          <div className="space-y-4">
             <button
-              className="absolute top-0.5 right-2 text-gray-800 text-xl font-bold hover:text-red-500"
-              onClick={() => { toggleModal(); playClickSound(); }}
+              className="w-full rounded-full bg-gradient-to-r from-yellow-400 via-red-500 to-purple-500 py-3 text-lg font-bold text-white shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl focus:outline-none"
+              onClick={() => { navigate("/options"); playClickSound(); }}
               onMouseEnter={playHoverSound}
             >
-              ×
+              World Flag Challenge
             </button>
-
-            <h2 className="text-2xl font-bold text-center mb-6 text-purple-600">Choose an Option</h2>
-            <div className="space-y-4">
-              <button
-                className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => { navigate("/options"); playClickSound(); }}
-                onMouseEnter={playHoverSound}
-              >
-                World Flag Challenge
-              </button>
-              <button
-                className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => { navigate("/ContinentGuessGame"); playClickSound();}}
-                onMouseEnter={playHoverSound}
-              >
-                Continent Quiz Game
-              </button>
-              <button
-                className="w-full rounded-lg bg-white py-2 text-lg font-semibold text-purple-600 shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                onClick={() => { navigate("/library"); playClickSound();}}
-                onMouseEnter={playHoverSound}
-              >
-                More About the Flags
-              </button>
-            </div>
+            <button
+              className="w-full rounded-full bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 py-3 text-lg font-bold text-white shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl focus:outline-none"
+              onClick={() => { navigate("/ContinentGuessGame"); playClickSound(); }}
+              onMouseEnter={playHoverSound}
+            >
+              Continent Quiz Game
+            </button>
+            <button
+              className="w-full rounded-full bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 py-3 text-lg font-bold text-white shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl focus:outline-none"
+              onClick={() => { navigate("/library"); playClickSound(); }}
+              onMouseEnter={playHoverSound}
+            >
+              More About the Flags
+            </button>
           </div>
         </div>
-      )}
+      </div>
+    )}
     </div>
   );
 }
