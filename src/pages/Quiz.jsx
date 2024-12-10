@@ -148,8 +148,14 @@ function Quiz() {
 )}
 
       {/* Country and Accuracy Display */}
-      <div className="text-center mt-12">
-        <h1 className="text-5xl font-extrabold text-blue-700 mb-4">{currentCountry && currentCountry.name}</h1>
+        <div className="flex flex-col items-center mt-12">
+      {/* Country Name */}
+      <h1 className="text-5xl font-extrabold text-blue-700 mb-4">
+        {currentCountry && currentCountry.name}
+      </h1>
+
+      {/* Accuracy Display */}
+      <div className="mt-4 flex flex-col items-center">
         <p className="text-xl font-semibold text-gray-600">
           Accuracy: <span className="text-blue-600">{accuracy}%</span>
         </p>
@@ -160,6 +166,7 @@ function Quiz() {
           ></div>
         </div>
       </div>
+    </div>
 
       {/* Flag Options */}
       <div className="grid grid-cols-4 gap-6 mt-12">
