@@ -16,7 +16,7 @@ function shuffle(array) {
 }
 
 function Quiz() {
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([]); 
   const [currentCountry, setCurrentCountry] = useState(null);
   const [flagOptions, setFlagOptions] = useState([]);
   const [correctClicks, setCorrectClicks] = useState(0);
