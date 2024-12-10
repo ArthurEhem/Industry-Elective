@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";  
 import hoverSound from '/Hover.mp3';
 import clickSound from '/Click.mp3';
 
@@ -36,6 +37,18 @@ function HomePage() {
   return (
     <div className="flex h-screen flex-col items-center bg-gradient-to-br from-blue-100 to-blue-300">
       <NavigationBar /> {/* Include the Navigation Bar */}
+      <MusicPlayer src="/Loop03.mp3" volume={0.5} />
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'url(/Flags01.gif)',
+          backgroundSize: '100%',
+          backgroundPosition: 'top',
+          opacity: 0.1,
+          zIndex: 0, // Ensure the background is behind all other content
+        }}
+      ></div>
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="flex flex-col items-center justify-center flex-grow">
         <img src="/Title.png" alt="Title" className="mb-8 animate-pulse-custom" />
         <button
