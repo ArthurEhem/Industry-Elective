@@ -9,17 +9,17 @@ function NavigationBar() {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-10 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 px-8 py-4 shadow-lg text-white flex items-center justify-between">
+    <nav className="w-full fixed top-0 left-0 z-10 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 px-8 py-4 shadow-lg text-white flex items-center">
       {/* Logo */}
       <div
-        className="text-5xl font-extrabold cursor-pointer hover:text-pink-300 transition-all"
+        className="text-5xl font-extrabold cursor-pointer hover:text-pink-300 transition-all mr-8"
         onClick={() => navigate("/")}
       >
         🌍
       </div>
 
       {/* Links */}
-      <ul className="flex items-center space-x-8 ml-12">
+      <ul className="flex items-center space-x-8">
         {/* Games with Dropdown */}
         <li className="relative group">
           <button
@@ -62,18 +62,13 @@ function NavigationBar() {
         </li>
 
         {/* About */}
-        <li className="text-2xl font-medium cursor-pointer hover:text-pink-300 transition-all">
+        <li
+          className="text-2xl font-medium cursor-pointer hover:text-pink-300 transition-all"
+          onClick={() => navigate("/about")}
+        >
           About
-        </li>   
+        </li>
       </ul>
-
-      {/* Call-to-Action Button */}
-      <button
-        className="ml-auto rounded-full bg-white text-indigo-600 px-6 py-2 text-sm font-semibold shadow-md hover:bg-gray-100 transition-all"
-        onClick={() => navigate("options")}
-      >
-        Get Started
-      </button>
     </nav>
   );
 }

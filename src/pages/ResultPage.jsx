@@ -88,7 +88,7 @@ function ResultPage() {
       <img
         src={clapBocchiGif}
         alt="Clapping Bocchi"
-        className="absolute bottom-4 right-4 w-24 h-auto"
+        className="absolute bottom-0 right-4 w-24 h-auto"
       />
     </div>
   );
