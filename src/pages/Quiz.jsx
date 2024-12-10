@@ -62,21 +62,55 @@ function Quiz() {
 
   function handleClick(country) {
     setTotalClicks(totalClicks + 1);
-
+  
+    // If the answer is correct
     if (country.name === currentCountry.name) {
       setCorrectClicks(correctClicks + 1);
       playAudio(rightAudioRef);
     } else {
+      // Handle incorrect answer
       playAudio(wrongAudioRef);
       setShowWrong(true);
-      setShowGif(true); // Show the GIF when the answer is wrong
+      setShowGif(true);
+  
+      // Check if this is the second-to-last flag
+      if (countries.length === 2) {
+        // Mark the last remaining flag as "wrong" as well
+        setTimeout(() => {
+          setShowWrong(false);
+          setShowGif(false);
+  
+          // Redirect to results as the game ends
+          navigate("/game/results", {
+            state: {
+              data: {
+                accuracy: ((correctClicks / (totalClicks + 1)) * 100).toFixed(2), // Add the extra incorrect attempt
+                score: correctClicks,
+                total: totalClicks + 1, // Reflect the total number of attempts correctly
+                continent: continent,
+                difficulty: difficulty,
+              },
+            },
+          });
+        }, 500);
+        return; // Exit here since the game ends after this.
+      }
+  
+      // Hide the feedback after a short timeout for regular incorrect answers
       setTimeout(() => {
         setShowWrong(false);
-        setShowGif(false); // Hide the GIF after 1 second
+        setShowGif(false);
       }, 500);
     }
-
-    if (countries.length <= 1) {
+  
+    // Continue with the game logic if more than two flags remain
+    if (countries.length > 1) {
+      setCountries(countries.filter((c) => c.name !== currentCountry.name));
+      const nextCountry = countries[Math.floor(Math.random() * countries.length)];
+      setCurrentCountry(nextCountry);
+      generateFlagOptions(nextCountry);
+    } else {
+      // Navigate to results page if the game is over
       navigate("/game/results", {
         state: {
           data: {
@@ -88,13 +122,9 @@ function Quiz() {
           },
         },
       });
-    } else {
-      setCountries(countries.filter((c) => c.name !== currentCountry.name));
-      const nextCountry = countries[Math.floor(Math.random() * countries.length)];
-      setCurrentCountry(nextCountry);
-      generateFlagOptions(nextCountry);
     }
   }
+  
 
   const accuracy = totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
@@ -102,26 +132,31 @@ function Quiz() {
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
       <MusicPlayer src="/Loop01.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
-
       {/* Place the 'Incorrect' message lower */}
       {showWrong && (
-        <div className="absolute top-32 text-5xl font-bold text-red-600 animate-pulse">
-          Incorrect
-        </div>
-      )}
-
-      {/* Show the GIF when wrong */}
+      <div className="absolute top-32 flex flex-col items-center text-3xl font-bold text-red-600 animate-pulse">
+    <div className="flex items-center">
+      <span>Incorrect</span>
       {showGif && (
         <img
           src={momoiGif}
           alt="Momoi Reaction"
-          className="absolute top-48 mx-auto h-24 w-24"
+          className="ml-4 h-16 w-16"
         />
       )}
+    </div>
+  </div>
+)}
 
       {/* Country and Accuracy Display */}
-      <div className="text-center mt-12">
-        <h1 className="text-5xl font-extrabold text-blue-700 mb-4">{currentCountry && currentCountry.name}</h1>
+        <div className="flex flex-col items-center mt-12">
+      {/* Country Name */}
+      <h1 className="text-5xl font-extrabold text-blue-700 mb-4">
+        {currentCountry && currentCountry.name}
+      </h1>
+
+      {/* Accuracy Display */}
+      <div className="mt-4 flex flex-col items-center">
         <p className="text-xl font-semibold text-gray-600">
           Accuracy: <span className="text-blue-600">{accuracy}%</span>
         </p>
@@ -132,6 +167,7 @@ function Quiz() {
           ></div>
         </div>
       </div>
+    </div>
 
       {/* Flag Options */}
       <div className="grid grid-cols-4 gap-6 mt-12">
