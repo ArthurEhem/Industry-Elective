@@ -6,7 +6,7 @@ import NavigationBar from "../components/NavigationBar";
 import MusicPlayer from "../components/MusicPlayer"; 
 
 const CountryQuizGame = () => {
-  const navigate = useNavigate();  // Hook to navigate
+  const navigate = useNavigate(); // Hook to navigate
   const [allCountries, setAllCountries] = useState([]);
   const [currentCountry, setCurrentCountry] = useState(null);
   const [currentQuestionType, setCurrentQuestionType] = useState("");
@@ -15,8 +15,8 @@ const CountryQuizGame = () => {
   const [questionCount, setQuestionCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [quizHistory, setQuizHistory] = useState([]); // New state to track quiz history
 
-  // Question types with their respective generation and validation logic
   const questionTypes = [
     {
       type: "continent",
@@ -56,7 +56,6 @@ const CountryQuizGame = () => {
     }
   ];
 
-  // Prepare countries on initial load
   useEffect(() => {
     const countriesList = continents.flatMap(continent => 
       continent.countriesList.map(country => ({
@@ -67,7 +66,6 @@ const CountryQuizGame = () => {
     setAllCountries(countriesList);
   }, []);
 
-  // Generate next question when countries are loaded or question count changes
   useEffect(() => {
     if (allCountries.length > 0 && questionCount < 10) {
       generateNextQuestion();
@@ -76,7 +74,6 @@ const CountryQuizGame = () => {
     }
   }, [allCountries, questionCount]);
 
-  // Shuffle array utility
   const shuffleArray = (array) => {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -86,24 +83,18 @@ const CountryQuizGame = () => {
     return newArray;
   };
 
-  // Generate next question
   const generateNextQuestion = () => {
-    // Randomly select a question type
     const randomQuestionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
     setCurrentQuestionType(randomQuestionType.type);
 
-    // Select a random country
     const nextCountry = allCountries[Math.floor(Math.random() * allCountries.length)];
     setCurrentCountry(nextCountry);
 
-    // Generate question and options
     const { question, correctAnswer, generateOptions } = randomQuestionType.generateQuestion(nextCountry);
-    
-    // Generate unique options, ensuring correct answer is included
+
     const allPossibleOptions = generateOptions();
     const uniqueOptions = [...new Set(allPossibleOptions)];
-    
-    // Create options array with correct answer and random other options
+
     const optionsSet = new Set([correctAnswer]);
     while (optionsSet.size < 4 && uniqueOptions.length > 0) {
       const randomOption = uniqueOptions[Math.floor(Math.random() * uniqueOptions.length)];
@@ -112,82 +103,114 @@ const CountryQuizGame = () => {
     }
 
     const shuffledOptions = shuffleArray(Array.from(optionsSet));
-    
+
     setOptions(shuffledOptions);
     setCorrectAnswer(correctAnswer);
   };
 
-  // Handle user's answer
   const handleAnswer = (selectedOption) => {
     const currentQuestionTypeObj = questionTypes.find(q => q.type === currentQuestionType);
-    
+
+    setQuizHistory(prevHistory => [
+      ...prevHistory,
+      {
+        question: currentQuestionTypeObj.generateQuestion(currentCountry).question,
+        correctAnswer,
+        selectedAnswer: selectedOption
+      }
+    ]);
+
     if (currentQuestionTypeObj.validateAnswer(selectedOption, correctAnswer)) {
       setScore(score + 1);
     }
-    
+
     setQuestionCount(questionCount + 1);
   };
 
-  // Reset game
   const resetGame = () => {
     setQuestionCount(0);
     setScore(0);
     setGameOver(false);
+    setQuizHistory([]);
     generateNextQuestion();
   };
 
   useEffect(() => {
     if (gameOver) {
-      confetti(); // Trigger the confetti effect
+      confetti();
     }
   }, [gameOver]);
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
-      <NavigationBar />
-      <MusicPlayer src="/Loop01.mp3" volume={0.5} />
-      <h1 className="text-5xl font-bold mb-10 text-center">Country Quiz</h1>
-      {gameOver ? (
-        <div className="text-center">
-          <h2 className="text-4xl font-semibold mb-6">Game Over!</h2>
-          <p className="text-2xl mb-6">Your score: {score} / 10</p>
+  <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 text-white p-6">
+    <NavigationBar />
+    <MusicPlayer src="/Loop01.mp3" volume={0.5} />
+    <h1 className="text-6xl font-extrabold mb-12 text-center">Country Quiz</h1>
+    {gameOver ? (
+      <div className="text-center w-full max-w-4xl">
+        <h2 className="text-5xl font-bold mb-4">Game Over!</h2>
+        <p className="text-3xl mb-8">Your score: {score} / 10</p>
+
+        {/* Buttons */}
+        <div className="flex justify-center gap-6 mb-6">
           <button
             onClick={resetGame}
-            className="mt-6 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-xl transition ease-in-out duration-200 transform hover:scale-105"
+            className="px-10 py-5 bg-green-500 hover:bg-green-600 text-white text-xl rounded-full shadow-lg transform hover:scale-110 transition ease-in-out duration-200"
           >
             Play Again
           </button>
           <button
-            onClick={() => navigate("/", { replace: true })} // Redirect to home page
-            className="mt-10 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-xl transition ease-in-out duration-200 transform hover:scale-105"
+            onClick={() => navigate("/", { replace: true })}
+            className="px-10 py-5 bg-red-500 hover:bg-red-600 text-white text-xl rounded-full shadow-lg transform hover:scale-110 transition ease-in-out duration-200"
           >
             Quit
           </button>
         </div>
-      ) : currentCountry ? (
-        <div className="bg-white text-gray-800 p-10 rounded-3xl shadow-2xl w-full max-w-2xl">
-          <p className="text-xl font-medium text-center mb-6">
-            Question {questionCount + 1} of 10 ({currentQuestionType})
-          </p>
-          <p className="text-3xl font-bold text-center mb-8">
-            {questionTypes.find(q => q.type === currentQuestionType).generateQuestion(currentCountry).question}
-          </p>
-          <div className="grid grid-cols-2 gap-6">
-            {options.map((option) => (
-              <button
-                key={option}
-                onClick={() => handleAnswer(option)}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition ease-in-out duration-200 transform hover:scale-105"
-              >
-                {option}
-              </button>
+
+        {/* Answer Sheet */}
+        <div className="bg-white text-gray-800 p-6 rounded-3xl shadow-xl w-full max-w-4xl overflow-y-auto max-h-[400px]">
+          <h3 className="text-3xl font-bold mb-4 text-center">Review</h3>
+          <ul className="text-lg space-y-6">
+            {quizHistory.map((entry, index) => (
+              <li key={index} className="p-4 border rounded-lg shadow-sm bg-gray-100">
+                <p className="text-xl font-semibold mb-2">
+                  <strong>Question {index + 1}:</strong> {entry.question}
+                </p>
+                <p className="text-lg">
+                  <strong>Correct Answer:</strong> {entry.correctAnswer}
+                </p>
+                <p className={`text-lg ${entry.correctAnswer === entry.selectedAnswer ? "text-green-600" : "text-red-600"}`}>
+                  <strong>Your Answer:</strong> {entry.selectedAnswer}
+                </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+      </div>
+    ) : currentCountry ? (
+      <div className="bg-white text-gray-800 p-12 rounded-3xl shadow-xl w-full max-w-3xl">
+        <p className="text-2xl font-semibold text-center mb-8">
+          Question {questionCount + 1} of 10 ({currentQuestionType})
+        </p>
+        <p className="text-4xl font-bold text-center mb-10">
+          {questionTypes.find(q => q.type === currentQuestionType).generateQuestion(currentCountry).question}
+        </p>
+        <div className="grid grid-cols-2 gap-8">
+          {options.map((option) => (
+            <button
+              key={option}
+              onClick={() => handleAnswer(option)}
+              className="px-8 py-4 bg-gradient-to-r from-blue-400 to-purple-400 text-white text-lg font-semibold rounded-lg shadow-lg transform hover:scale-105 transition ease-in-out duration-200"
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <p className="text-2xl font-bold text-center">Loading...</p>
+    )}
+  </div>
   );
 };
 
