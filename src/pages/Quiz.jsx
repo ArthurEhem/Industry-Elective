@@ -1,3 +1,4 @@
+// Quiz Component
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import rightSound from '/Right.mp3'; 
@@ -23,6 +24,7 @@ function Quiz() {
   const [totalClicks, setTotalClicks] = useState(0);
   const [showWrong, setShowWrong] = useState(false);
   const [showGif, setShowGif] = useState(false); // State for controlling the GIF visibility
+  const [clickedFlags, setClickedFlags] = useState([]);
 
   const rightAudioRef = useRef(new Audio(rightSound));
   const wrongAudioRef = useRef(new Audio(wrongSound));
@@ -44,6 +46,8 @@ function Quiz() {
     }
   }, [countries]);
 
+  useEffect(() => { console.log(clickedFlags) }, [clickedFlags]);
+
   function generateFlagOptions(correctCountry) {
     const incorrectOptions = countries
       .filter((country) => country.name !== correctCountry.name)
@@ -61,56 +65,59 @@ function Quiz() {
   }
 
   function handleClick(country) {
+    
     setTotalClicks(totalClicks + 1);
-  
-    // If the answer is correct
+
+    setClickedFlags((prev) => [
+      ...prev,
+      {
+        country: country.name,
+        code: country.code,
+        correct: country.name === currentCountry.name,
+        timestamp: new Date().toISOString(),
+      },
+    ]);
+
     if (country.name === currentCountry.name) {
       setCorrectClicks(correctClicks + 1);
       playAudio(rightAudioRef);
     } else {
-      // Handle incorrect answer
       playAudio(wrongAudioRef);
       setShowWrong(true);
       setShowGif(true);
-  
-      // Check if this is the second-to-last flag
+
       if (countries.length === 2) {
-        // Mark the last remaining flag as "wrong" as well
         setTimeout(() => {
           setShowWrong(false);
           setShowGif(false);
-  
-          // Redirect to results as the game ends
           navigate("/game/results", {
             state: {
               data: {
-                accuracy: ((correctClicks / (totalClicks + 1)) * 100).toFixed(2), // Add the extra incorrect attempt
+                accuracy: ((correctClicks / (totalClicks + 1)) * 100).toFixed(2),
                 score: correctClicks,
-                total: totalClicks + 1, // Reflect the total number of attempts correctly
+                total: totalClicks + 1,
                 continent: continent,
                 difficulty: difficulty,
+                history: clickedFlags,
               },
             },
           });
         }, 500);
-        return; // Exit here since the game ends after this.
+        return;
       }
-  
-      // Hide the feedback after a short timeout for regular incorrect answers
+
       setTimeout(() => {
         setShowWrong(false);
         setShowGif(false);
       }, 500);
     }
-  
-    // Continue with the game logic if more than two flags remain
+
     if (countries.length > 1) {
       setCountries(countries.filter((c) => c.name !== currentCountry.name));
       const nextCountry = countries[Math.floor(Math.random() * countries.length)];
       setCurrentCountry(nextCountry);
       generateFlagOptions(nextCountry);
     } else {
-      // Navigate to results page if the game is over
       navigate("/game/results", {
         state: {
           data: {
@@ -119,57 +126,51 @@ function Quiz() {
             total: totalClicks,
             continent: continent,
             difficulty: difficulty,
+            history: clickedFlags,
           },
         },
       });
     }
   }
-  
 
   const accuracy = totalClicks > 0 ? ((correctClicks / totalClicks) * 100).toFixed(2) : 0;
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
-      <MusicPlayer src="/Loop01.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
-      {/* Place the 'Incorrect' message lower */}
+      <MusicPlayer src="/Loop01.mp3" volume={0.5} />
       {showWrong && (
-      <div className="absolute top-32 flex flex-col items-center text-3xl font-bold text-red-600 animate-pulse">
-    <div className="flex items-center">
-      <span>Incorrect</span>
-      {showGif && (
-        <img
-          src={momoiGif}
-          alt="Momoi Reaction"
-          className="ml-4 h-16 w-16"
-        />
+        <div className="absolute top-32 flex flex-col items-center text-3xl font-bold text-red-600 animate-pulse">
+          <div className="flex items-center">
+            <span>Incorrect</span>
+            {showGif && (
+              <img
+                src={momoiGif}
+                alt="Momoi Reaction"
+                className="ml-4 h-16 w-16"
+              />
+            )}
+          </div>
+        </div>
       )}
-    </div>
-  </div>
-)}
 
-      {/* Country and Accuracy Display */}
-        <div className="flex flex-col items-center mt-12">
-      {/* Country Name */}
-      <h1 className="text-5xl font-extrabold text-blue-700 mb-4">
-        {currentCountry && currentCountry.name}
-      </h1>
-
-      {/* Accuracy Display */}
-      <div className="mt-4 flex flex-col items-center">
-        <p className="text-xl font-semibold text-gray-600">
-          Accuracy: <span className="text-blue-600">{accuracy}%</span>
-        </p>
-        <div className="w-64 h-2 mt-2 bg-gray-300 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-blue-600 transition-all duration-300"
-            style={{ width: `${accuracy}%` }}
-          ></div>
+      <div className="flex flex-col items-center mt-12">
+        <h1 className="text-5xl font-extrabold text-blue-700 mb-4">
+          {currentCountry && currentCountry.name}
+        </h1>
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-xl font-semibold text-gray-600">
+            Accuracy: <span className="text-blue-600">{accuracy}%</span>
+          </p>
+          <div className="w-64 h-2 mt-2 bg-gray-300 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-blue-600 transition-all duration-300"
+              style={{ width: `${accuracy}%` }}
+            ></div>
+          </div>
         </div>
       </div>
-    </div>
 
-      {/* Flag Options */}
       <div className="grid grid-cols-4 gap-6 mt-12">
         {flagOptions.map((country, index) => (
           <div
@@ -187,7 +188,6 @@ function Quiz() {
         ))}
       </div>
 
-      {/* Retry and Quit buttons */}
       <div className="mt-8 flex gap-8">
         <button
           onClick={() => navigate(0)}
@@ -203,7 +203,6 @@ function Quiz() {
         </button>
       </div>
 
-      {/* Shuffle Button */}
       <div className="mt-12">
         <button
           onClick={() => setCountries(shuffle(countries))}
@@ -217,3 +216,4 @@ function Quiz() {
 }
 
 export default Quiz;
+  

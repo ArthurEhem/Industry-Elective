@@ -4,21 +4,13 @@ import confetti from "canvas-confetti"; // Import confetti
 import clapBocchiGif from "../assets/clap-bocchi.gif";
 import MusicPlayer from "../components/MusicPlayer";
 
-function secondsToHMS(seconds) {
-  const h = Math.floor(seconds / 3600)
-    .toString()
-    .padStart(2, "0");
-  const m = Math.floor((seconds % 3600) / 60)
-    .toString()
-    .padStart(2, "0");
-  const s = (seconds % 60).toString().padStart(2, "0");
-  return `${h}:${m}:${s}`;
-}
-
 function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
+
+
+  useEffect(() => { console.log(data.history) }, [data.history]);
 
   // Trigger confetti when the result page is loaded
   useEffect(() => {
@@ -43,6 +35,19 @@ function ResultPage() {
     navigate("/game", {
       replace: true,
       state: { continent: data.continent, difficulty: data.difficulty },
+    });
+  }
+
+  function handleViewHistoryClick() {
+    navigate("/history", { 
+      replace: true, 
+      state: { 
+        accuracy: data.accuracy,
+        score: data.score,
+        total: data.total,
+        continent: data.continent,
+        difficulty: data.difficulty,
+        history: data.history },
     });
   }
 
@@ -100,6 +105,12 @@ function ResultPage() {
             onClick={handleQuitClick}
           >
             Quit
+          </button>
+          <button
+            className="w-full rounded-lg bg-gradient-to-r from-green-600 to-green-500 py-3 text-lg font-semibold text-white shadow-md hover:from-red-700 hover:to-red-600 active:scale-95 transform transition-all duration-150"
+            onClick={handleViewHistoryClick}
+          >
+            View History
           </button>
         </div>
       </div>
