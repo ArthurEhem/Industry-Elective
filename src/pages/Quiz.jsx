@@ -74,7 +74,8 @@ function Quiz() {
         country: country.name,
         code: country.code,
         correct: country.name === currentCountry.name,
-        timestamp: new Date().toISOString(),
+        asked: currentCountry.name,
+        askedcode: currentCountry.code,
       },
     ]);
 
