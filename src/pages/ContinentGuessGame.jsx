@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import navigate hook
 import { continents } from "../data/continentsquiz";
 import confetti from "canvas-confetti";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer"; 
 
 const CountryQuizGame = () => {
   const navigate = useNavigate();  // Hook to navigate
@@ -144,6 +145,7 @@ const CountryQuizGame = () => {
   return (
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
+      <MusicPlayer src="/Loop01.mp3" volume={0.5} />
       <h1 className="text-5xl font-bold mb-10 text-center">Country Quiz</h1>
       {gameOver ? (
         <div className="text-center">
