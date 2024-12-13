@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -12,11 +12,20 @@ function Options() {
   const [selectedContinent, setSelectedContinent] = useState(continents[0]);
   const [selectedDifficulty, setSelectedDifficulty] = useState(difficultyOptions[0]);
   const navigate = useNavigate();
+  const musicPlayerRef = useRef(null);
+
+  const toggleMusic = () => {
+    if (musicPlayerRef.current.isPlaying()) {
+      musicPlayerRef.current.pause();
+    } else {
+      musicPlayerRef.current.play();
+    }
+  };
 
   return (
     <div className="relative flex h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
-      <NavigationBar />
-      <MusicPlayer src="/Loop02.mp3" volume={0.5} /> {/* Add MusicPlayer here */}
+      <NavigationBar toggleMusic={toggleMusic} /> {/* Pass toggleMusic function */}
+      <MusicPlayer ref={musicPlayerRef} src="/Loop02.mp3" volume={0.5} />
       <div
         className="absolute inset-0"
         style={{
@@ -30,7 +39,7 @@ function Options() {
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="rounded-xl bg-white p-12 shadow-2xl transition-transform transform hover:scale-105 duration-200">
         <h1 className="text-3xl font-extrabold text-gray-700 mb-8">Select Your Preferences</h1>
-        
+
         <div className="space-y-10">
           <div>
             <label htmlFor="continent" className="block text-sm font-medium text-gray-600">
