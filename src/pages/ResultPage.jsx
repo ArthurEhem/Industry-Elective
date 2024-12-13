@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti"; // Import confetti
 import clapBocchiGif from "../assets/clap-bocchi.gif";
 import MusicPlayer from "../components/MusicPlayer";
+import hoverSound from "/Hover.mp3";
+import clickSound from "/Click.mp3";
 
 function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
+  const audioRef = useRef(new Audio(hoverSound));
+  const clickAudioRef = useRef(new Audio(clickSound));
 
-
-  useEffect(() => { console.log(data.history) }, [data.history]);
+  useEffect(() => { console.log(data.history); }, [data.history]);
 
   // Trigger confetti when the result page is loaded
   useEffect(() => {
@@ -31,7 +34,18 @@ function ResultPage() {
     return () => clearInterval(confettiInterval);
   }, []);
 
+  const playHoverSound = () => {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+  };
+
+  const playClickSound = () => {
+    clickAudioRef.current.currentTime = 0;
+    clickAudioRef.current.play();
+  };
+
   function handleRetryClick() {
+    playClickSound();
     navigate("/game", {
       replace: true,
       state: { continent: data.continent, difficulty: data.difficulty },
@@ -39,19 +53,22 @@ function ResultPage() {
   }
 
   function handleViewHistoryClick() {
-    navigate("/history", { 
-      replace: true, 
-      state: { 
+    playClickSound();
+    navigate("/history", {
+      replace: true,
+      state: {
         accuracy: data.accuracy,
         score: data.score,
         total: data.total,
         continent: data.continent,
         difficulty: data.difficulty,
-        history: data.history },
+        history: data.history,
+      },
     });
   }
 
   function handleQuitClick() {
+    playClickSound();
     navigate("/", { replace: true });
   }
 
@@ -61,9 +78,9 @@ function ResultPage() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/Flags01.gif)',
-          backgroundSize: '100%',
-          backgroundPosition: 'bottom',
+          backgroundImage: "url(/Flags01.gif)",
+          backgroundSize: "100%",
+          backgroundPosition: "bottom",
           opacity: 0.2,
           zIndex: 0, // Ensure the background is behind all other content
         }}
@@ -93,28 +110,32 @@ function ResultPage() {
             </h2>
           </div>
         </div>
+        {/* Container for buttons */}
         <div className="mt-16 flex space-x-4">
           <button
-            className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
+            className="w-20 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-lg font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95 transform transition-all duration-150"
+            onMouseEnter={playHoverSound}
             onClick={handleRetryClick}
           >
             Retry
           </button>
           <button
-            className="w-full rounded-lg bg-gradient-to-r from-red-600 to-red-500 py-3 text-lg font-semibold text-white shadow-md hover:from-red-700 hover:to-red-600 active:scale-95 transform transition-all duration-150"
+            className="w-20 rounded-lg bg-gradient-to-r from-red-600 to-red-500 py-3 text-lg font-semibold text-white shadow-md hover:from-red-700 hover:to-red-600 active:scale-95 transform transition-all duration-150"
+            onMouseEnter={playHoverSound}
             onClick={handleQuitClick}
           >
             Quit
           </button>
           <button
-            className="w-full rounded-lg bg-gradient-to-r from-green-600 to-green-500 py-3 text-lg font-semibold text-white shadow-md hover:from-red-700 hover:to-red-600 active:scale-95 transform transition-all duration-150"
+            className="w-20 rounded-lg bg-gradient-to-r from-green-600 to-green-500 py-3 text-lg font-semibold text-white shadow-md hover:from-green-700 hover:to-green-600 active:scale-95 transform transition-all duration-150"
+            onMouseEnter={playHoverSound}
             onClick={handleViewHistoryClick}
           >
-            View History
+            Review
           </button>
         </div>
       </div>
-      
+
       {/* GIF at the bottom-right corner */}
       <img
         src={clapBocchiGif}
