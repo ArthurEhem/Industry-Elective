@@ -1,4 +1,3 @@
-// Quiz Component
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import rightSound from '/RightAlt.mp3'; 
@@ -6,6 +5,8 @@ import wrongSound from '/Wrong.mp3';
 import NavigationBar from "../components/NavigationBar";
 import MusicPlayer from "../components/MusicPlayer";
 import momoiGif from "../assets/momoiR.gif"; // Import the GIF
+import hoverSound from "/Hover.mp3";
+import clickSound from "/Click.mp3";
 
 function shuffle(array) {
   const newArray = [...array];
@@ -28,6 +29,8 @@ function Quiz() {
 
   const rightAudioRef = useRef(new Audio(rightSound));
   const wrongAudioRef = useRef(new Audio(wrongSound));
+  const audioRef = useRef(new Audio(hoverSound));
+  const clickAudioRef = useRef(new Audio(clickSound));
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -64,8 +67,17 @@ function Quiz() {
     audioRef.current.play();
   }
 
+  const playHoverSound = () => {
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+  };
+
+  const playClickSound = () => {
+    clickAudioRef.current.currentTime = 0;
+    clickAudioRef.current.play();
+  };
+
   function handleClick(country) {
-    
     setTotalClicks(totalClicks + 1);
 
     setClickedFlags((prev) => [
@@ -140,8 +152,20 @@ function Quiz() {
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6">
       <NavigationBar />
       <MusicPlayer src="/Loop01.mp3" volume={0.5} />
+      <div
+        className="absolute inset-1"
+        style={{
+          backgroundImage: 'url(/Flags01.gif)',
+          backgroundSize: '100%',
+          backgroundPosition: 'top',
+          opacity: 0.1,
+          zIndex: 1,
+        }}
+      ></div>
+      <div className="absolute inset-0 backdrop-blur-lg" style={{ zIndex: 2 }}></div>
+
       {showWrong && (
-        <div className="absolute top-32 flex flex-col items-center text-3xl font-bold text-red-600 animate-pulse">
+        <div className={`absolute ${ difficulty === 'hard' ? 'right-32' : 'top-32' } flex flex-col items-center text-6xl font-bold text-red-600 animate-pulse`} style={{ zIndex: 4 }} >
           <div className="flex items-center">
             <span>Incorrect</span>
             {showGif && (
@@ -155,7 +179,7 @@ function Quiz() {
         </div>
       )}
 
-      <div className="flex flex-col items-center mt-12">
+      <div className="flex flex-col items-center mt-12" style={{ zIndex: 3 }}>
         <h1 className="text-5xl font-extrabold text-blue-700 mb-4">
           {currentCountry && currentCountry.name}
         </h1>
@@ -172,7 +196,7 @@ function Quiz() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-6 mt-12">
+      <div className="grid grid-cols-4 gap-6 mt-12" style={{ zIndex: 3 }}>
         {flagOptions.map((country, index) => (
           <div
             key={index}
@@ -189,24 +213,27 @@ function Quiz() {
         ))}
       </div>
 
-      <div className="mt-8 flex gap-8">
+      <div className="mt-8 flex gap-8" style={{ zIndex: 3 }}>
         <button
-          onClick={() => navigate(0)}
+          onMouseEnter={playHoverSound}
+          onClick={() => { playClickSound(); navigate("/", { replace: true }); }}
           className="rounded-lg bg-blue-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-transform duration-150"
         >
           Retry
         </button>
         <button
-          onClick={() => navigate("/", { replace: true })}
+          onMouseEnter={playHoverSound}
+          onClick={() => { playClickSound(); navigate("/", { replace: true });}}
           className="rounded-lg bg-red-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:bg-red-700 active:scale-95 transition-transform duration-150"
         >
           Quit
         </button>
       </div>
 
-      <div className="mt-12">
+      <div className="mt-12" style={{ zIndex: 3 }}>
         <button
-          onClick={() => setCountries(shuffle(countries))}
+          onMouseEnter={playHoverSound}
+          onClick={() => { playClickSound(); setCountries(shuffle(countries)); }}
           className="rounded-lg bg-gray-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-gray-700 active:scale-95 transition-transform duration-150"
         >
           Shuffle
@@ -217,4 +244,3 @@ function Quiz() {
 }
 
 export default Quiz;
-  
