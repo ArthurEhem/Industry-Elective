@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import NavigationBar from "../components/NavigationBar";
+import MusicPlayer from "../components/MusicPlayer";  
 
 
 function History() {
@@ -30,6 +31,7 @@ function History() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 p-6 pt-20"> {/* Add pt-20 to create space for navbar */}
       <NavigationBar />
+      <MusicPlayer src="/Loop03.mp3" volume={0.5} />
       <h1 className="text-4xl font-bold text-center mb-6 text-blue-700 pt-10">Clicked Flags History</h1>
       
       {/* Results Button - Positioned with padding-top to make sure it's not covered */}

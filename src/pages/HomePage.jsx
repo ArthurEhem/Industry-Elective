@@ -11,6 +11,7 @@ function HomePage() {
   const [showModal, setShowModal] = useState(false); // State to manage modal visibility
   const audioRef = useRef(new Audio(hoverSound));
   const clickAudioRef = useRef(new Audio(clickSound));
+  const musicPlayerRef = useRef(null);
 
   // Function to handle opening and closing the modal
   const toggleModal = () => {
@@ -34,10 +35,18 @@ function HomePage() {
     clickAudioRef.current.play(); 
   };
 
+  const toggleMusic = () => {
+    if (musicPlayerRef.current.isPlaying()) {
+      musicPlayerRef.current.pause();
+    } else {
+      musicPlayerRef.current.play();
+    }
+  };
+
   return (
     <div className="flex h-screen flex-col items-center bg-gradient-to-br from-blue-100 to-blue-300">
-      <NavigationBar /> {/* Include the Navigation Bar */}
-      <MusicPlayer src="/Loop03.mp3" volume={0.5} />
+      <NavigationBar toggleMusic={toggleMusic} /> {/* Pass the toggleMusic function */}
+      <MusicPlayer ref={musicPlayerRef} src="/Loop03.mp3" volume={0.5} />
       <div
         className="absolute inset-0"
         style={{
