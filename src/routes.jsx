@@ -7,7 +7,8 @@ import Options from "./pages/Options";
 import Library from "./pages/Library";
 import ContinentGuessGame from "./pages/ContinentGuessGame";
 import ProtectedGameRoute from "./components/ProtectedRoute";
-import History from "./pages/History"; // Import the History page
+import History from "./pages/History";
+import About from "./pages/About";
 
 const browserRouter = createBrowserRouter([
   {
@@ -77,12 +78,22 @@ const browserRouter = createBrowserRouter([
     ]
   },
   {
-    path: "/history", // Add the new History route
+    path: "/history",
     element: <Layout />,
     children: [
       {
         path: "",
-        element: <History /> // Add the History component here
+        element: <History />
+      }
+    ]
+  },
+  {
+    path: "/about",
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <About />
       }
     ]
   }
