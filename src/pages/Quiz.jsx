@@ -61,6 +61,14 @@ function Quiz() {
     setFlagOptions(options);
   }
 
+
+  // VOLUME FOR THE ANSWERS!!!
+  useEffect(() => {
+    rightAudioRef.current.volume = 0.3;
+    wrongAudioRef.current.volume = 0.5;
+  }, []);
+
+
   function playAudio(audioRef) {
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
